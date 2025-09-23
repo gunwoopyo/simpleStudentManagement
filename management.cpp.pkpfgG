@@ -1,0 +1,52 @@
+#include <QMessageBox>
+#include <QString>
+#include <QDebug>
+
+
+student* management::manageHead = nullptr;
+
+void management::insertStudent(int studentID, QString name, QString major, int year) {
+    if (management::checkStudentID(studentID)) { // 학번이 중복되지 않으면 true
+        student* newStudent = new student(studentID, name, major, year);   // 객체 생성
+
+        if (manageHead== nullptr)   // 시스템의 헤드포인터가 널이면 바로 삽입.
+            manageHead = newStudent;
+        else { // 헤드포인터가 널이 아니면--> student 객체가 있으면
+            student* current = manageHead;
+            while (current->studentNext != nullptr) {
+                current = current->studentNext;
+            }
+            // while 문 빠져나와 current next가 널일 때 링크드 리스트로 연결
+            current->studentNext = newStudent;
+            newStudent->studentPrev = current;
+        }
+        qDebug() << "[insertStudent] 현재 head:" << manageHead;
+        qDebug() << "[insertStudent] 추가된 학생:"
+                 << studentID << name << major << year;
+    }
+    else
+        QMessageBox::warning(nullptr, "등록 실패", "이미 등록된 학번입니다.");
+}
+
+
+
+bool management::checkStudentID(int studentID) {
+    student* current = manageHead;
+    while (current != nullptr)
+    {
+        if (current->getStudentID() == studentID) {
+            return false;
+        }
+
+        current = current->studentNext;
+    }
+    return true;
+}
+
+
+
+
+
+
+
+
