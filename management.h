@@ -11,8 +11,15 @@ public:
 
 
     void insertStudent(int studentID, QString name, QString major, int year);
-    //bool checkStudentID(int studnetID);   // if not existing studentID --> true
+    void deleteStudent(int studentID);
+
+
+    void addCourse(student* stn, QString courseName, double courseGrade);
+    void deleteCourse(student* stn);
+
     static student* searchStudentID(int studentID);
+
+    bool checkStudentID(int studentID);
 
     void updateGrade(student* stn, QString courseName, double grade);
 

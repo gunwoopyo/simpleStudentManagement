@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1036</width>
-    <height>784</height>
+    <width>1096</width>
+    <height>752</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,9 +17,9 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>30</y>
-      <width>881</width>
+      <x>30</x>
+      <y>0</y>
+      <width>991</width>
       <height>661</height>
      </rect>
     </property>
@@ -33,7 +33,7 @@
      <widget class="QFrame" name="frame_4">
       <property name="geometry">
        <rect>
-        <x>70</x>
+        <x>110</x>
         <y>70</y>
         <width>701</width>
         <height>81</height>
@@ -101,9 +101,9 @@
      <widget class="QTableWidget" name="tableWidget_3">
       <property name="geometry">
        <rect>
-        <x>70</x>
-        <y>190</y>
-        <width>711</width>
+        <x>120</x>
+        <y>200</y>
+        <width>701</width>
         <height>321</height>
        </rect>
       </property>
@@ -172,8 +172,8 @@
        <rect>
         <x>30</x>
         <y>90</y>
-        <width>831</width>
-        <height>111</height>
+        <width>931</width>
+        <height>81</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -185,8 +185,8 @@
       <widget class="QLineEdit" name="studentIDText">
        <property name="geometry">
         <rect>
-         <x>90</x>
-         <y>40</y>
+         <x>100</x>
+         <y>30</y>
          <width>113</width>
          <height>26</height>
         </rect>
@@ -195,8 +195,8 @@
       <widget class="QLabel" name="studentID">
        <property name="geometry">
         <rect>
-         <x>10</x>
-         <y>40</y>
+         <x>20</x>
+         <y>30</y>
          <width>91</width>
          <height>18</height>
         </rect>
@@ -208,8 +208,8 @@
       <widget class="QLabel" name="name">
        <property name="geometry">
         <rect>
-         <x>220</x>
-         <y>40</y>
+         <x>230</x>
+         <y>30</y>
          <width>51</width>
          <height>18</height>
         </rect>
@@ -221,8 +221,8 @@
       <widget class="QLineEdit" name="nameText">
        <property name="geometry">
         <rect>
-         <x>270</x>
-         <y>40</y>
+         <x>280</x>
+         <y>30</y>
          <width>113</width>
          <height>26</height>
         </rect>
@@ -231,8 +231,8 @@
       <widget class="QLabel" name="major">
        <property name="geometry">
         <rect>
-         <x>400</x>
-         <y>40</y>
+         <x>410</x>
+         <y>30</y>
          <width>51</width>
          <height>18</height>
         </rect>
@@ -244,7 +244,7 @@
       <widget class="QLineEdit" name="majorText">
        <property name="geometry">
         <rect>
-         <x>450</x>
+         <x>460</x>
          <y>30</y>
          <width>113</width>
          <height>26</height>
@@ -254,8 +254,8 @@
       <widget class="QLabel" name="year">
        <property name="geometry">
         <rect>
-         <x>570</x>
-         <y>40</y>
+         <x>590</x>
+         <y>30</y>
          <width>51</width>
          <height>18</height>
         </rect>
@@ -267,8 +267,8 @@
       <widget class="QLineEdit" name="yearText">
        <property name="geometry">
         <rect>
-         <x>600</x>
-         <y>40</y>
+         <x>630</x>
+         <y>30</y>
          <width>113</width>
          <height>26</height>
         </rect>
@@ -277,8 +277,8 @@
       <widget class="QPushButton" name="registrationpushButton">
        <property name="geometry">
         <rect>
-         <x>720</x>
-         <y>40</y>
+         <x>810</x>
+         <y>30</y>
          <width>93</width>
          <height>26</height>
         </rect>
@@ -291,10 +291,10 @@
      <widget class="QTableWidget" name="tableWidget">
       <property name="geometry">
        <rect>
-        <x>80</x>
+        <x>200</x>
         <y>220</y>
         <width>611</width>
-        <height>301</height>
+        <height>351</height>
        </rect>
       </property>
       <column>
@@ -331,15 +331,15 @@
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>40</y>
+        <x>30</x>
+        <y>30</y>
         <width>341</width>
         <height>31</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>15</pointsize>
+        <pointsize>18</pointsize>
         <bold>true</bold>
        </font>
       </property>
@@ -348,114 +348,16 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="widget">
+    <widget class="QWidget" name="tab">
      <attribute name="title">
       <string>Page</string>
      </attribute>
-     <widget class="QFrame" name="frame_3">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>80</y>
-        <width>801</width>
-        <height>71</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Shape::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Shadow::Raised</enum>
-      </property>
-      <widget class="QLineEdit" name="AddCourseStudentIDText_2">
-       <property name="geometry">
-        <rect>
-         <x>110</x>
-         <y>20</y>
-         <width>113</width>
-         <height>26</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="AddCourseStudentID_2">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>20</y>
-         <width>91</width>
-         <height>18</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>StudentID</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="AddCourse_2">
-       <property name="geometry">
-        <rect>
-         <x>260</x>
-         <y>20</y>
-         <width>51</width>
-         <height>18</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Course</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="AddCourseText_2">
-       <property name="geometry">
-        <rect>
-         <x>320</x>
-         <y>20</y>
-         <width>113</width>
-         <height>26</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="AddCourseGrade_2">
-       <property name="geometry">
-        <rect>
-         <x>460</x>
-         <y>20</y>
-         <width>51</width>
-         <height>18</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Grade</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="AddCourseGradeText_2">
-       <property name="geometry">
-        <rect>
-         <x>510</x>
-         <y>20</y>
-         <width>113</width>
-         <height>26</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="AddCoursePushButton_2">
-       <property name="geometry">
-        <rect>
-         <x>690</x>
-         <y>20</y>
-         <width>93</width>
-         <height>26</height>
-        </rect>
-       </property>
-       <property name="text">
-        <string>Add</string>
-       </property>
-      </widget>
-     </widget>
      <widget class="QLabel" name="label_3">
       <property name="geometry">
        <rect>
-        <x>30</x>
+        <x>40</x>
         <y>30</y>
-        <width>201</width>
+        <width>341</width>
         <height>31</height>
        </rect>
       </property>
@@ -469,40 +371,57 @@
        <string>Delete Student</string>
       </property>
      </widget>
-     <widget class="QTableWidget" name="tableWidget_4">
+     <widget class="QFrame" name="frame_6">
       <property name="geometry">
        <rect>
-        <x>130</x>
-        <y>190</y>
-        <width>511</width>
-        <height>231</height>
+        <x>30</x>
+        <y>90</y>
+        <width>931</width>
+        <height>81</height>
        </rect>
       </property>
-      <column>
-       <property name="text">
-        <string>studentID</string>
+      <property name="frameShape">
+       <enum>QFrame::Shape::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Raised</enum>
+      </property>
+      <widget class="QLineEdit" name="deleteStudentText">
+       <property name="geometry">
+        <rect>
+         <x>120</x>
+         <y>30</y>
+         <width>201</width>
+         <height>26</height>
+        </rect>
        </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>name</string>
+      </widget>
+      <widget class="QLabel" name="deleteStudent">
+       <property name="geometry">
+        <rect>
+         <x>30</x>
+         <y>30</y>
+         <width>91</width>
+         <height>18</height>
+        </rect>
        </property>
-      </column>
-      <column>
        <property name="text">
-        <string>courseName</string>
+        <string>StudentID</string>
        </property>
-      </column>
-      <column>
+      </widget>
+      <widget class="QPushButton" name="deleteStudentPushButton">
+       <property name="geometry">
+        <rect>
+         <x>810</x>
+         <y>30</y>
+         <width>93</width>
+         <height>26</height>
+        </rect>
+       </property>
        <property name="text">
-        <string>grade</string>
+        <string>Delete</string>
        </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>GPA</string>
-       </property>
-      </column>
+      </widget>
      </widget>
     </widget>
     <widget class="QWidget" name="Course">
@@ -665,6 +584,30 @@
         <string>grade</string>
        </property>
       </column>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="tab_2">
+     <attribute name="title">
+      <string>Page</string>
+     </attribute>
+     <widget class="QLabel" name="label_6">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>30</y>
+        <width>161</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>course Delete</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="Update">
@@ -836,7 +779,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1036</width>
+     <width>1096</width>
      <height>23</height>
     </rect>
    </property>

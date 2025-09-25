@@ -24,9 +24,10 @@ public:
     QString getName() { return name; }
     QString getMajor() { return major; }
     int getYear() { return year; }
+    double getGPA() { return GPA; }
 
 
-    void addCourse(QString courseName, double courseGrade);
+
 
 
 public slots:
