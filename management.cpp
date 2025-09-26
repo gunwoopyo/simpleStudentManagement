@@ -3,39 +3,75 @@
 #include <QDebug>
 #include "management.h"
 #include "student.h"
+#include "course.h"
 #include <QMessageBox>
 #include <QtSql/QSqlDatabase>
 #include <QtSql/QSqlQuery>
 #include <QtSql/QSqlError>
-student* management::manageHead = nullptr;
-void management::insertStudent(int studentID, QString name, QString major, int year) {
+
+
+
+void management::insertStudent(int studentID, QString name, QString major, int year, QString courseName, QString grade) {
         student* newStudent = new student(studentID, name, major, year);
-        if (manageHead == nullptr) {                 // 시스템의 헤드포인터가 널이면 바로 삽입.
+        student* current = manageHead;
+        if (manageHead == nullptr) {
             manageHead = newStudent;
         }
-        else {                                     // 헤드포인터가 널이 아니면--> student 객체가 있으면
-            student* current = manageHead;
+        else {
             while (current->studentNext != nullptr) {
                 current = current->studentNext;
             }
-            // while 문 빠져나와 current next가 널일 때 링크드 리스트로 연결
             current->studentNext = newStudent;
             newStudent->studentPrev = current;
         }
-        QSqlDatabase db = QSqlDatabase::database();
-        QSqlQuery query(db);
-        query.prepare("INSERT INTO student (studentID, name, major, year) " "VALUES (:id, :name, :major, :year)");
-        query.bindValue(":id", studentID);
-        query.bindValue(":name", name);
-        query.bindValue(":major", major);
-        query.bindValue(":year", year);
 
-        if(!query.exec()) {
-            qDebug() << "학생 DB 추가 실패:" << query.lastError().text();
-        } else {
-            qDebug() << "학생 DB 추가 성공!";
+
+
+        course* newCourse = new course(courseName, grade);
+        course* currentCourse = newStudent->courseList;
+
+        if(currentCourse == nullptr) {
+            currentCourse = newCourse;
         }
+        else{
+            while(currentCourse != nullptr){
+                currentCourse = currentCourse->courseNext;
+            }
+            currentCourse->courseNext = newCourse;
+            newCourse->coursePrev = currentCourse;
+        }
+
+
+        QSqlDatabase db = QSqlDatabase::database();
+
+        QSqlQuery query1(db);
+        query1.prepare("INSERT INTO student (studentID, name, major, year) VALUES (:id, :name, :major, :year)");
+        query1.bindValue(":id", studentID);
+        query1.bindValue(":name", name);
+        query1.bindValue(":major", major);
+        query1.bindValue(":year", year);
+        if(!query1.exec()) {
+            qDebug() << "query 1 학생 DB 추가 실패:" << query1.lastError().text();
+        } else {
+            qDebug() << "query 1 학생 DB 추가 성공!";
+        }
+
+        QSqlQuery query2(db);
+        query2.prepare("INSERT INTO enrollment (studentID, courseName, grade) VALUES (:eID, :ename, :egrade)");
+        query2.bindValue(":eID", studentID);
+        query2.bindValue(":ename", courseName);
+        query2.bindValue(":egrade", grade);
+        if(!query2.exec()) {
+            qDebug() << "query 2 학생 DB 추가 실패:" << query2.lastError().text();
+        } else {
+            qDebug() << "query 2 학생 DB 추가 성공!";
+        }
+
+        qDebug() << "insert head pointer : " << manageHead;
 }
+
+
+
 
 void management::deleteStudent(int studentID){
     student* current = manageHead;
@@ -70,7 +106,7 @@ void management::deleteStudent(int studentID){
 
 
 
-void management::addCourse(student* stn, QString n, double g) {
+void management::addCourse(student* stn, QString n, QString g) {
     course* newCourse = new course(n, g);
 
     course* current = stn->courseList;
@@ -104,7 +140,7 @@ student* management::searchStudentID(int studentID) {
 }
 
 
-void management::updateGrade(student* s, QString courseName, double grade) {
+void management::updateGrade(student* s, QString courseName, QString grade) {
     course* c = s->courseList;
     while(c != nullptr) {
         if(c->getCourseName() == courseName){
@@ -115,15 +151,18 @@ void management::updateGrade(student* s, QString courseName, double grade) {
 }
 
 bool management::checkStudentID(int studentID) {
-    student* current = management::manageHead;
-    while(current != nullptr) {
-        if(current->getStudentID() == studentID){
-            return true;
-        }
-        current = current->studentNext;
+    QSqlQuery query("SELECT studentID FROM student");
+    while(query.next()) { // DB에서 한 행씩 읽기
+        int dbStudentID = query.value(0).toInt();  // 첫번째 컬럼
+            if(studentID == dbStudentID) {
+                qDebug() << "Linked List와 DB에 존재 : " << dbStudentID;
+                return true;
+            }
     }
     return false;
 }
+
+
 
 
 

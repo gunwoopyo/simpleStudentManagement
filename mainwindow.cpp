@@ -6,10 +6,18 @@
 #include <QDebug>
 #include <QMessageBox>
 #include "student.h"
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
+#include <QtSql/QSqlError>
+
+
+
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow){
+    , ui(new Ui::MainWindow) {
     ui->setupUi(this);
+
     ui->tabWidget->setTabText(0, "학생 조회");
     ui->tabWidget->setTabText(1, "학생 등록");
     ui->tabWidget->setTabText(2, "학생 삭제");
@@ -18,10 +26,70 @@ MainWindow::MainWindow(QWidget *parent)
     ui->tabWidget->setTabText(5, "학점 변경");
 }
 
+
+void MainWindow::on_registrationpushButton_clicked() {
+    int studentID = ui->registrationStudentIDText->text().toInt();
+    QString name = ui->registrationNameText->text();
+    QString major = ui->registrationMajorText->text();
+    int year = ui->registrationYearText->text().toInt();
+    QString courseName = ui-> registrationCourseNameText->text();
+    QString grade = ui-> registrationGradeText->text();
+
+
+    if(!manager->checkStudentID(studentID)){  //  ~(return false)
+        manager->insertStudent(studentID, name, major, year, courseName, grade);
+        showRegistrationTable();
+        return;
+    }
+    QMessageBox::warning(this, "실패", "이미 등록한 학번입니다.");
+    ui->registrationStudentIDText->setFocus();
+    return;
+}
+
+void MainWindow::showRegistrationTable() {
+    QSqlQuery query("SELECT s.studentID, s.name, s.major, s.year, e.courseName, e.grade FROM student s INNER JOIN enrollment e ON s.studentID = e.studentID;");
+
+     ui->tableWidget->setRowCount(0);
+
+    int row = 0;
+    while (query.next()) { // 행으로 이동
+        ui->tableWidget->insertRow(row);  // 행 추가
+
+        ui->tableWidget->setItem(row, 0, new QTableWidgetItem(query.value(0).toString()));  // first collum
+        ui->tableWidget->setItem(row, 1, new QTableWidgetItem(query.value(1).toString()));  // second collum
+        ui->tableWidget->setItem(row, 2, new QTableWidgetItem(query.value(2).toString()));
+        ui->tableWidget->setItem(row, 3, new QTableWidgetItem(query.value(3).toString()));
+        ui->tableWidget->setItem(row, 4, new QTableWidgetItem(query.value(4).toString()));
+        ui->tableWidget->setItem(row, 5, new QTableWidgetItem(query.value(5).toString()));
+
+        row++;
+    }
+}
+
 void MainWindow::on_deleteStudentPushButton_clicked() {
     int studentID = ui->deleteStudentText->text().toInt();
     manager->deleteStudent(studentID);
+    showDeleteTable();
+
 }
+void MainWindow::showDeleteTable() {
+    QSqlQuery query("SELECT studentID, name, major, year FROM student");
+
+    ui->tableWidget_4->setRowCount(0);
+
+    int row = 0;
+    while (query.next()) { // 행으로 이동
+        ui->tableWidget_4->insertRow(row);  // 행 추가
+
+        ui->tableWidget_4->setItem(row, 0, new QTableWidgetItem(query.value(0).toString()));  // first collum
+        ui->tableWidget_4->setItem(row, 1, new QTableWidgetItem(query.value(1).toString()));  // second collum
+        ui->tableWidget_4->setItem(row, 2, new QTableWidgetItem(query.value(2).toString()));
+        ui->tableWidget_4->setItem(row, 3, new QTableWidgetItem(query.value(3).toString()));
+
+        row++;
+    }
+}
+
 
 
 
@@ -75,7 +143,7 @@ void MainWindow::tab1ShowStudentTable(student* current) {  // 학생 한명만 �
         ui->tableWidget_3->setItem(row, 2, new QTableWidgetItem(current->getMajor()));
         ui->tableWidget_3->setItem(row, 3, new QTableWidgetItem(QString::number(current->getYear())));
         ui->tableWidget_3->setItem(row, 4, new QTableWidgetItem(c->getCourseName()));
-        ui->tableWidget_3->setItem(row, 5, new QTableWidgetItem(QString::number(c->getGrade())));
+        ui->tableWidget_3->setItem(row, 5, new QTableWidgetItem(c->getGrade()));
         // ui->tableWidget_3->setItem(row, 5, new QTableWidgetItem(QString::number(current->)));  GPA
         row++;
         c = c->courseNext;
@@ -111,7 +179,7 @@ void MainWindow::AllStudentSearchButton() {
             ui->tableWidget_3->setItem(row, 2, new QTableWidgetItem(current->getMajor()));
             ui->tableWidget_3->setItem(row, 3, new QTableWidgetItem(QString::number(current->getYear())));
             ui->tableWidget_3->setItem(row, 4, new QTableWidgetItem(c->getCourseName()));
-            ui->tableWidget_3->setItem(row, 5, new QTableWidgetItem(QString::number(c->getGrade())));
+            ui->tableWidget_3->setItem(row, 5, new QTableWidgetItem(c->getGrade()));
 
             row++;
             c = c->courseNext;
@@ -142,7 +210,7 @@ void MainWindow::showCourseTable(student* current) {
         ui->tableWidget_2->setItem(row, 2, new QTableWidgetItem(current->getMajor()));
         ui->tableWidget_2->setItem(row, 3, new QTableWidgetItem(QString::number(current->getYear())));
         ui->tableWidget_2->setItem(row, 2, new QTableWidgetItem(c->getCourseName()));
-        ui->tableWidget_2->setItem(row, 3, new QTableWidgetItem(QString::number(c->getGrade())));
+        ui->tableWidget_2->setItem(row, 3, new QTableWidgetItem(c->getGrade()));
 
         c = c->courseNext; // 다음 과목으로 이동
         row++;       // 다음 행으로 이동
@@ -161,32 +229,12 @@ void MainWindow::showCourseTable(student* current) {
 
 
 
-void MainWindow::showRegistrationTable() {
-
-    ui->tableWidget->setRowCount(0); // 기존 내용 초기화
-    student* current = management::manageHead;
-    int row = 0;
-    while(current != nullptr) {
-        ui->tableWidget->insertRow(row); // 새로운 행 추가
-
-        // 각 셀에 데이터 삽입
-        ui->tableWidget->setItem(row, 0, new QTableWidgetItem(QString::number(current->getStudentID())));
-        ui->tableWidget->setItem(row, 1, new QTableWidgetItem(current->getName()));
-        ui->tableWidget->setItem(row, 2, new QTableWidgetItem(current->getMajor()));
-        ui->tableWidget->setItem(row, 3, new QTableWidgetItem(QString::number(current->getYear())));
-
-        current = current->studentNext;
-        row++;
-    }
-}
-
-
 
 
 void MainWindow::on_addCoursePushButton_clicked(){
     int studentID = ui->AddCourseStudentIDText->text().toInt();
     QString course = ui->AddCourseText->text();
-    double grade = ui->AddCourseGradeText->text().toDouble();
+    QString grade = ui->AddCourseGradeText->text();
     student* stn = manager->searchStudentID(studentID);
     if(stn != nullptr) {
         QMessageBox::warning(this, "failed", "not existing studentID.");
@@ -200,30 +248,13 @@ void MainWindow::on_addCoursePushButton_clicked(){
 
 
 
-void MainWindow::on_registrationpushButton_clicked() {
-    int studentID = ui->studentIDText->text().toInt();
-    QString name = ui->nameText->text();
-    QString major = ui->majorText->text();
-    int year = ui->yearText->text().toInt();
-    if(!manager->checkStudentID(studentID)){  //  ~(return false)
-
-        manager->insertStudent(studentID, name, major, year);
-        showRegistrationTable();
-        return;
-    }
-    QMessageBox::warning(this, "실패", "이미 등록한 학번입니다.");
-    ui->studentIDText->setFocus();
-    return;
-}
-
-//qDebug() << "find!!!!" <<  " current address : " << current <<  "id : " <<    current->getStudentID();
 
 
-// 학점 변경에서 학번의 과목과 입력받은 과목 일치하지 않으면 경고 메시지
+
 void MainWindow::on_updateButton_clicked() {
 
     int studentID = ui->updateStudentIDText->text().toInt();
-    double grade = ui->updateGradeText->text().toDouble();
+    QString grade = ui->updateGradeText->text();
     QString coursename = ui->updateCourseText->text();
 
     student* stn = management::searchStudentID(studentID); //return object
@@ -268,7 +299,7 @@ void MainWindow::tab5_studentTable(student* current, QString coursename) {  // �
             ui->tableWidget_5->setItem(row, 2, new QTableWidgetItem(current->getMajor()));
             ui->tableWidget_5->setItem(row, 3, new QTableWidgetItem(QString::number(current->getYear())));
             ui->tableWidget_5->setItem(row, 4, new QTableWidgetItem(c->getCourseName()));
-            ui->tableWidget_5->setItem(row, 5, new QTableWidgetItem(QString::number(c->getGrade())));
+            ui->tableWidget_5->setItem(row, 5, new QTableWidgetItem(c->getGrade()));
         }
 
         //row++;
@@ -279,24 +310,12 @@ void MainWindow::tab5_studentTable(student* current, QString coursename) {  // �
 }
 
 
-
-
-
-
-
-
-
-
-
-
-
 MainWindow::~MainWindow()
 {
     clearAllStudents();
+    qDebug() << "finish head pointer" << management::manageHead;
     delete ui;
 }
-
-
 
 
 

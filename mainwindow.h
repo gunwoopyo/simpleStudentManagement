@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 #include <QMainWindow>
 #include "management.h"
+
 QT_BEGIN_NAMESPACE
 namespace Ui {
 class MainWindow;
@@ -21,7 +22,13 @@ public slots:
     void clearAllStudents();
 
     void on_registrationpushButton_clicked();
-    void showRegistrationTable(); // 학생 등록 테이블    //학생 출력 테이블
+    void showRegistrationTable(); // 학생 등록 테이블
+
+    void on_deleteStudentPushButton_clicked();
+    void showDeleteTable();
+
+
+
 
     void on_studentSearchButton_clicked();
     void tab1ShowStudentTable(student* stn);
@@ -35,7 +42,6 @@ public slots:
     void on_updateButton_clicked();
     void tab5_studentTable(student* s, QString qn);
 
-    void on_deleteStudentPushButton_clicked();
 private slots:
 };
 

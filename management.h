@@ -3,25 +3,22 @@
 #include <QString>
 #include "student.h"
 
-
-
 class management {
 public:
     static student* manageHead;
 
-
-    void insertStudent(int studentID, QString name, QString major, int year);
+    void insertStudent(int studentID, QString name, QString major, int year, QString courseName, QString grade);
     void deleteStudent(int studentID);
 
-
-    void addCourse(student* stn, QString courseName, double courseGrade);
+    void addCourse(student* stn, QString courseName, QString courseGrade);
     void deleteCourse(student* stn);
 
+    bool checkStudentID(int studentID);
     static student* searchStudentID(int studentID);
 
-    bool checkStudentID(int studentID);
 
-    void updateGrade(student* stn, QString courseName, double grade);
+
+    void updateGrade(student* stn, QString courseName, QString grade);
 
 
 

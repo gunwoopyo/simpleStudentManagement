@@ -1,36 +1,26 @@
 #ifndef COURSE_H
 #define COURSE_H
 #include <QString>
-
 class course {
-
 private:
     QString courseName;
-    double grade;
-
-
+    QString grade;
 public:
-
     course* coursePrev;
     course* courseNext;
-
-    course(QString name, double g) : courseName(name), grade(g), coursePrev(nullptr), courseNext(nullptr) {}
-
+    course(QString name, QString g) : courseName(name), grade(g), coursePrev(nullptr), courseNext(nullptr) {}
     QString getCourseName() {
         return courseName;
     }
-    double getGrade() {
+    QString getGrade() {
         return grade;
     }
     void setCourseName(QString course) {
         this->courseName = course;
     }
-    void setGrade(double g) {
+    void setGrade(QString g) {
         this->grade = g;
     }
-
-
-
 };
 
 
