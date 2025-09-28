@@ -18,7 +18,9 @@ public:
     student* studentPrev;
     student* studentNext;
 
-    student(int ID, QString n, QString m, int y) : studentID(ID), name(n), major(m), year(y), courseList(nullptr), studentPrev(nullptr), studentNext(nullptr) {}
+    student(int ID, QString n, QString m, int y)
+        : studentID(ID), name(n), major(m), year(y),
+        courseList(nullptr), studentPrev(nullptr), studentNext(nullptr) {}
 
     int getStudentID() { return studentID; }
     QString getName() { return name; }

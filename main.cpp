@@ -14,6 +14,7 @@ student* management::manageHead = nullptr;
 
 int main(int argc, char *argv[])
 {
+
     QApplication a(argc, argv);
     QSqlDatabase db = QSqlDatabase::addDatabase("QMYSQL");
     qDebug() << "드라이버" << QSqlDatabase::drivers();
@@ -26,13 +27,10 @@ int main(int argc, char *argv[])
         qDebug() << "DB 연결 실패:" << db.lastError().text();
     } else {
         qDebug() << "DB 연결 성공!";
-        qDebug() << "================================================================";
+        qDebug() << "====================================================================================================";
     }
 
     QSqlQuery query("SELECT s.studentID, s.name, s.major, s.year, e.courseName, e.grade FROM student s INNER JOIN enrollment e ON s.studentID = e.studentID;");
-
-    management::manageHead = nullptr;
-
 
 
     while (query.next()) {
@@ -84,10 +82,6 @@ int main(int argc, char *argv[])
             newCourse->coursePrev = currentCourse;
         }
     }
-
-    qDebug() << "head address : " << management::manageHead;
-    qDebug() << "head address -> next : " << management::manageHead->studentNext;
-
 
 
     MainWindow w;

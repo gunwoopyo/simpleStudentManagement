@@ -8,7 +8,9 @@ private:
 public:
     course* coursePrev;
     course* courseNext;
+
     course(QString name, QString g) : courseName(name), grade(g), coursePrev(nullptr), courseNext(nullptr) {}
+
     QString getCourseName() {
         return courseName;
     }

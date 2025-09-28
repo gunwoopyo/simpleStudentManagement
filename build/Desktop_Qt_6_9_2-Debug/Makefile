@@ -1676,7 +1676,9 @@ main.o: ../../main.cpp ../../mainwindow.h \
 		../../../Qt/6.9.2/gcc_64/include/QtSql/qsqlerror.h \
 		../../../Qt/6.9.2/gcc_64/include/QtCore/QDebug \
 		../../../Qt/6.9.2/gcc_64/include/QtWidgets/QApplication \
-		../../../Qt/6.9.2/gcc_64/include/QtWidgets/qapplication.h
+		../../../Qt/6.9.2/gcc_64/include/QtWidgets/qapplication.h \
+		../../../Qt/6.9.2/gcc_64/include/QtSql/QSqlQuery \
+		../../../Qt/6.9.2/gcc_64/include/QtSql/qsqlquery.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../../main.cpp
 
 mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
@@ -1888,6 +1890,8 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../Qt/6.9.2/gcc_64/include/QtWidgets/qapplication.h \
 		../../../Qt/6.9.2/gcc_64/include/QtWidgets/QFrame \
 		../../../Qt/6.9.2/gcc_64/include/QtWidgets/qframe.h \
+		../../../Qt/6.9.2/gcc_64/include/QtWidgets/QGroupBox \
+		../../../Qt/6.9.2/gcc_64/include/QtWidgets/qgroupbox.h \
 		../../../Qt/6.9.2/gcc_64/include/QtWidgets/QHeaderView \
 		../../../Qt/6.9.2/gcc_64/include/QtWidgets/qheaderview.h \
 		../../../Qt/6.9.2/gcc_64/include/QtWidgets/qabstractitemview.h \
@@ -1920,19 +1924,36 @@ mainwindow.o: ../../mainwindow.cpp ../../mainwindow.h \
 		../../../Qt/6.9.2/gcc_64/include/QtWidgets/QPushButton \
 		../../../Qt/6.9.2/gcc_64/include/QtWidgets/qpushbutton.h \
 		../../../Qt/6.9.2/gcc_64/include/QtWidgets/qabstractbutton.h \
+		../../../Qt/6.9.2/gcc_64/include/QtWidgets/QRadioButton \
+		../../../Qt/6.9.2/gcc_64/include/QtWidgets/qradiobutton.h \
 		../../../Qt/6.9.2/gcc_64/include/QtWidgets/QStatusBar \
 		../../../Qt/6.9.2/gcc_64/include/QtWidgets/qstatusbar.h \
 		../../../Qt/6.9.2/gcc_64/include/QtWidgets/QTabWidget \
 		../../../Qt/6.9.2/gcc_64/include/QtWidgets/QTableWidget \
 		../../../Qt/6.9.2/gcc_64/include/QtWidgets/qtablewidget.h \
 		../../../Qt/6.9.2/gcc_64/include/QtWidgets/qtableview.h \
+		../../../Qt/6.9.2/gcc_64/include/QtWidgets/QVBoxLayout \
+		../../../Qt/6.9.2/gcc_64/include/QtWidgets/qboxlayout.h \
+		../../../Qt/6.9.2/gcc_64/include/QtWidgets/qlayout.h \
+		../../../Qt/6.9.2/gcc_64/include/QtWidgets/qlayoutitem.h \
+		../../../Qt/6.9.2/gcc_64/include/QtWidgets/qgridlayout.h \
 		../../../Qt/6.9.2/gcc_64/include/QtWidgets/QWidget \
 		../../../Qt/6.9.2/gcc_64/include/QtWidgets/QTableWidgetItem \
 		../../../Qt/6.9.2/gcc_64/include/QtCore/QDebug \
 		../../../Qt/6.9.2/gcc_64/include/QtWidgets/QMessageBox \
 		../../../Qt/6.9.2/gcc_64/include/QtWidgets/qmessagebox.h \
 		../../../Qt/6.9.2/gcc_64/include/QtWidgets/qdialog.h \
-		../../../Qt/6.9.2/gcc_64/include/QtWidgets/qdialogbuttonbox.h
+		../../../Qt/6.9.2/gcc_64/include/QtWidgets/qdialogbuttonbox.h \
+		../../../Qt/6.9.2/gcc_64/include/QtSql/QSqlDatabase \
+		../../../Qt/6.9.2/gcc_64/include/QtSql/qsqldatabase.h \
+		../../../Qt/6.9.2/gcc_64/include/QtSql/qtsqlglobal.h \
+		../../../Qt/6.9.2/gcc_64/include/QtSql/qtsql-config.h \
+		../../../Qt/6.9.2/gcc_64/include/QtSql/qtsqlexports.h \
+		../../../Qt/6.9.2/gcc_64/include/QtCore/qmetaobject.h \
+		../../../Qt/6.9.2/gcc_64/include/QtSql/QSqlQuery \
+		../../../Qt/6.9.2/gcc_64/include/QtSql/qsqlquery.h \
+		../../../Qt/6.9.2/gcc_64/include/QtSql/QSqlError \
+		../../../Qt/6.9.2/gcc_64/include/QtSql/qsqlerror.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o ../../mainwindow.cpp
 
 management.o: ../../management.cpp ../../../Qt/6.9.2/gcc_64/include/QtWidgets/QMessageBox \
@@ -2138,7 +2159,17 @@ management.o: ../../management.cpp ../../../Qt/6.9.2/gcc_64/include/QtWidgets/QM
 		../../../Qt/6.9.2/gcc_64/include/QtCore/QDebug \
 		../../management.h \
 		../../student.h \
-		../../course.h
+		../../course.h \
+		../../../Qt/6.9.2/gcc_64/include/QtSql/QSqlDatabase \
+		../../../Qt/6.9.2/gcc_64/include/QtSql/qsqldatabase.h \
+		../../../Qt/6.9.2/gcc_64/include/QtSql/qtsqlglobal.h \
+		../../../Qt/6.9.2/gcc_64/include/QtSql/qtsql-config.h \
+		../../../Qt/6.9.2/gcc_64/include/QtSql/qtsqlexports.h \
+		../../../Qt/6.9.2/gcc_64/include/QtCore/qmetaobject.h \
+		../../../Qt/6.9.2/gcc_64/include/QtSql/QSqlQuery \
+		../../../Qt/6.9.2/gcc_64/include/QtSql/qsqlquery.h \
+		../../../Qt/6.9.2/gcc_64/include/QtSql/QSqlError \
+		../../../Qt/6.9.2/gcc_64/include/QtSql/qsqlerror.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o management.o ../../management.cpp
 
 student.o: ../../student.cpp ../../../Qt/6.9.2/gcc_64/include/QtCore/QString \

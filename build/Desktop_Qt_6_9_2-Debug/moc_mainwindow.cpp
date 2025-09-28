@@ -39,12 +39,11 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
         "MainWindow",
-        "clearAllStudents",
+        "on_registrationPushButton_clicked",
         "",
-        "on_registrationpushButton_clicked",
-        "showRegistrationTable",
+        "registrationTable",
         "on_deleteStudentPushButton_clicked",
-        "showDeleteTable",
+        "deleteTable",
         "on_studentSearchButton_clicked",
         "tab1ShowStudentTable",
         "student*",
@@ -56,42 +55,43 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "on_updateButton_clicked",
         "tab5_studentTable",
         "s",
-        "qn"
+        "qn",
+        "clearAllStudents"
     };
 
     QtMocHelpers::UintData qt_methods {
-        // Slot 'clearAllStudents'
+        // Slot 'on_registrationPushButton_clicked'
         QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'on_registrationpushButton_clicked'
+        // Slot 'registrationTable'
         QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'showRegistrationTable'
-        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'on_deleteStudentPushButton_clicked'
+        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'deleteTable'
         QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'showDeleteTable'
-        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'on_studentSearchButton_clicked'
-        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'tab1ShowStudentTable'
-        QtMocHelpers::SlotData<void(student *)>(8, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 9, 10 },
+        QtMocHelpers::SlotData<void(student *)>(7, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 8, 9 },
         }}),
         // Slot 'on_allStudentSearchButton_clicked'
-        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'AllStudentSearchButton'
-        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'on_addCoursePushButton_clicked'
-        QtMocHelpers::SlotData<void()>(13, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'showCourseTable'
-        QtMocHelpers::SlotData<void(student *)>(14, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 9, 10 },
+        QtMocHelpers::SlotData<void(student *)>(13, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 8, 9 },
         }}),
         // Slot 'on_updateButton_clicked'
-        QtMocHelpers::SlotData<void()>(15, 2, QMC::AccessPublic, QMetaType::Void),
+        QtMocHelpers::SlotData<void()>(14, 2, QMC::AccessPublic, QMetaType::Void),
         // Slot 'tab5_studentTable'
-        QtMocHelpers::SlotData<void(student *, QString)>(16, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 9, 17 }, { QMetaType::QString, 18 },
+        QtMocHelpers::SlotData<void(student *, QString)>(15, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 8, 16 }, { QMetaType::QString, 17 },
         }}),
+        // Slot 'clearAllStudents'
+        QtMocHelpers::SlotData<void()>(18, 2, QMC::AccessPublic, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -115,19 +115,19 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     auto *_t = static_cast<MainWindow *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->clearAllStudents(); break;
-        case 1: _t->on_registrationpushButton_clicked(); break;
-        case 2: _t->showRegistrationTable(); break;
-        case 3: _t->on_deleteStudentPushButton_clicked(); break;
-        case 4: _t->showDeleteTable(); break;
-        case 5: _t->on_studentSearchButton_clicked(); break;
-        case 6: _t->tab1ShowStudentTable((*reinterpret_cast< std::add_pointer_t<student*>>(_a[1]))); break;
-        case 7: _t->on_allStudentSearchButton_clicked(); break;
-        case 8: _t->AllStudentSearchButton(); break;
-        case 9: _t->on_addCoursePushButton_clicked(); break;
-        case 10: _t->showCourseTable((*reinterpret_cast< std::add_pointer_t<student*>>(_a[1]))); break;
-        case 11: _t->on_updateButton_clicked(); break;
-        case 12: _t->tab5_studentTable((*reinterpret_cast< std::add_pointer_t<student*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 0: _t->on_registrationPushButton_clicked(); break;
+        case 1: _t->registrationTable(); break;
+        case 2: _t->on_deleteStudentPushButton_clicked(); break;
+        case 3: _t->deleteTable(); break;
+        case 4: _t->on_studentSearchButton_clicked(); break;
+        case 5: _t->tab1ShowStudentTable((*reinterpret_cast< std::add_pointer_t<student*>>(_a[1]))); break;
+        case 6: _t->on_allStudentSearchButton_clicked(); break;
+        case 7: _t->AllStudentSearchButton(); break;
+        case 8: _t->on_addCoursePushButton_clicked(); break;
+        case 9: _t->showCourseTable((*reinterpret_cast< std::add_pointer_t<student*>>(_a[1]))); break;
+        case 10: _t->on_updateButton_clicked(); break;
+        case 11: _t->tab5_studentTable((*reinterpret_cast< std::add_pointer_t<student*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
+        case 12: _t->clearAllStudents(); break;
         default: ;
         }
     }
