@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
         int studentID = query.value(0).toInt();
         QString name = query.value(1).toString();
         QString major = query.value(2).toString();
-        int year = query.value(3).toInt();
+        QString year = query.value(3).toString();
         QString courseName = query.value(4).toString();
         QString grade = query.value(5).toString();
 

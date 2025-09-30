@@ -53,8 +53,9 @@ void management::deleteStudent(int studentID){
         }
         currentStudent = currentStudent->studentNext;
     }
-
 }
+
+    void debugDeleteList();
 void management::debugInsertList() {
     int index = 0;
 

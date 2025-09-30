@@ -16,33 +16,33 @@ public:
     management* manager= new management();
 private:
     Ui::MainWindow *ui;
-
 public slots:
     void on_registrationPushButton_clicked();
     void registrationTable(); // 학생 등록 테이블
 
     void on_deleteStudentPushButton_clicked();
-    void deleteTable();
-
-
-
+    void deleteStudentTable();
 
     void on_studentSearchButton_clicked();
-    void tab1ShowStudentTable(student* stn);
-
+    void searchStudentTable(student* stn);
     void on_allStudentSearchButton_clicked();
-    void AllStudentSearchButton();       // 모든 학생 조회
 
     void on_addCoursePushButton_clicked();
-    void showCourseTable(student* stn); //과목 목록 테이블
+    void addCourseTable(student* stn); //과목 목록 테이블
+
+    void on_deleteCoursePushButton_clicked();
+    void deleteCourseTable(student* stn); //과목 목록 테이블
+
 
     void on_updateButton_clicked();
-    void tab5_studentTable(student* s, QString qn);
+    void upgradeGradeTable(student* stn, QString coursename);
 
 
     void clearAllStudents();
 
 private slots:
+    void onTabChanged(int index);  // 탭 변경 시 호출될 슬롯
+    void onMajorChanged(const QString &major);  // 전공 변경 슬롯
 };
 
 #endif // MAINWINDOW_H

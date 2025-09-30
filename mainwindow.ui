@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1301</width>
-    <height>1030</height>
+    <width>1240</width>
+    <height>809</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,9 +17,9 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>90</x>
+      <x>50</x>
       <y>20</y>
-      <width>1121</width>
+      <width>1131</width>
       <height>721</height>
      </rect>
     </property>
@@ -27,7 +27,7 @@
      <number>-1</number>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>4</number>
     </property>
     <widget class="QWidget" name="searchTab">
      <attribute name="title">
@@ -36,10 +36,10 @@
      <widget class="QFrame" name="searchFrame">
       <property name="geometry">
        <rect>
-        <x>60</x>
-        <y>90</y>
-        <width>1001</width>
-        <height>61</height>
+        <x>70</x>
+        <y>80</y>
+        <width>981</width>
+        <height>71</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -51,7 +51,7 @@
       <widget class="QLineEdit" name="searchStudentIDText">
        <property name="geometry">
         <rect>
-         <x>170</x>
+         <x>180</x>
          <y>20</y>
          <width>261</width>
          <height>26</height>
@@ -64,7 +64,7 @@
       <widget class="QLabel" name="searchStudentID">
        <property name="geometry">
         <rect>
-         <x>60</x>
+         <x>100</x>
          <y>20</y>
          <width>91</width>
          <height>18</height>
@@ -82,7 +82,7 @@
       <widget class="QPushButton" name="studentSearchButton">
        <property name="geometry">
         <rect>
-         <x>750</x>
+         <x>730</x>
          <y>20</y>
          <width>93</width>
          <height>26</height>
@@ -100,7 +100,7 @@
       <widget class="QPushButton" name="allStudentSearchButton">
        <property name="geometry">
         <rect>
-         <x>880</x>
+         <x>850</x>
          <y>20</y>
          <width>93</width>
          <height>26</height>
@@ -116,7 +116,7 @@
        </property>
       </widget>
      </widget>
-     <widget class="QTableWidget" name="tableWidget_3">
+     <widget class="QTableWidget" name="searchTable">
       <property name="geometry">
        <rect>
         <x>150</x>
@@ -202,7 +202,7 @@
      <widget class="QLabel" name="label_4">
       <property name="geometry">
        <rect>
-        <x>40</x>
+        <x>60</x>
         <y>30</y>
         <width>281</width>
         <height>31</height>
@@ -218,6 +218,24 @@
        <string>학생 정보 조회</string>
       </property>
      </widget>
+     <widget class="QLabel" name="label_8">
+      <property name="geometry">
+       <rect>
+        <x>150</x>
+        <y>170</y>
+        <width>111</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>전체 학생 리스트</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="registrationTab">
      <attribute name="title">
@@ -226,10 +244,10 @@
      <widget class="QFrame" name="registrationFrame">
       <property name="geometry">
        <rect>
-        <x>30</x>
+        <x>70</x>
         <y>70</y>
-        <width>1031</width>
-        <height>131</height>
+        <width>981</width>
+        <height>111</height>
        </rect>
       </property>
       <property name="frameShape">
@@ -242,8 +260,8 @@
        <property name="geometry">
         <rect>
          <x>150</x>
-         <y>30</y>
-         <width>113</width>
+         <y>20</y>
+         <width>121</width>
          <height>26</height>
         </rect>
        </property>
@@ -252,7 +270,7 @@
        <property name="geometry">
         <rect>
          <x>90</x>
-         <y>30</y>
+         <y>20</y>
          <width>61</width>
          <height>18</height>
         </rect>
@@ -270,7 +288,7 @@
        <property name="geometry">
         <rect>
          <x>310</x>
-         <y>30</y>
+         <y>20</y>
          <width>51</width>
          <height>18</height>
         </rect>
@@ -288,8 +306,8 @@
        <property name="geometry">
         <rect>
          <x>370</x>
-         <y>30</y>
-         <width>113</width>
+         <y>20</y>
+         <width>121</width>
          <height>26</height>
         </rect>
        </property>
@@ -297,8 +315,8 @@
       <widget class="QLabel" name="registrationMajor">
        <property name="geometry">
         <rect>
-         <x>540</x>
-         <y>30</y>
+         <x>90</x>
+         <y>70</y>
          <width>51</width>
          <height>18</height>
         </rect>
@@ -312,21 +330,11 @@
         <string>전공</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="registrationMajorText">
-       <property name="geometry">
-        <rect>
-         <x>610</x>
-         <y>30</y>
-         <width>113</width>
-         <height>26</height>
-        </rect>
-       </property>
-      </widget>
       <widget class="QLabel" name="registrationYear">
        <property name="geometry">
         <rect>
-         <x>90</x>
-         <y>80</y>
+         <x>540</x>
+         <y>20</y>
          <width>51</width>
          <height>18</height>
         </rect>
@@ -340,20 +348,10 @@
         <string>학년</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="registrationYearText">
-       <property name="geometry">
-        <rect>
-         <x>150</x>
-         <y>80</y>
-         <width>113</width>
-         <height>26</height>
-        </rect>
-       </property>
-      </widget>
       <widget class="QPushButton" name="registrationPushButton">
        <property name="geometry">
         <rect>
-         <x>890</x>
+         <x>810</x>
          <y>30</y>
          <width>93</width>
          <height>26</height>
@@ -372,7 +370,7 @@
        <property name="geometry">
         <rect>
          <x>290</x>
-         <y>80</y>
+         <y>70</y>
          <width>71</width>
          <height>18</height>
         </rect>
@@ -386,21 +384,11 @@
         <string>수강 과목</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="registrationCourseNameText">
-       <property name="geometry">
-        <rect>
-         <x>370</x>
-         <y>80</y>
-         <width>113</width>
-         <height>26</height>
-        </rect>
-       </property>
-      </widget>
       <widget class="QLabel" name="registrationGrade">
        <property name="geometry">
         <rect>
          <x>540</x>
-         <y>80</y>
+         <y>70</y>
          <width>51</width>
          <height>18</height>
         </rect>
@@ -414,12 +402,137 @@
         <string>성적</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="registrationGradeText">
+      <widget class="QComboBox" name="registrationMajorComboBox">
        <property name="geometry">
         <rect>
-         <x>610</x>
-         <y>80</y>
-         <width>113</width>
+         <x>150</x>
+         <y>70</y>
+         <width>121</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>컴퓨터공학과</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>전자공학과</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>기계공학과</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="registrationYearComboBox">
+       <property name="geometry">
+        <rect>
+         <x>590</x>
+         <y>20</y>
+         <width>121</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>1</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>2</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>3</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>4</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>5</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>6</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="registrationGradeCombobox">
+       <property name="geometry">
+        <rect>
+         <x>590</x>
+         <y>70</y>
+         <width>121</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>A+</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>A</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B+</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>C+</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>C</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>F</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="registrationCourseNameComboBox">
+       <property name="geometry">
+        <rect>
+         <x>370</x>
+         <y>70</y>
+         <width>121</width>
          <height>26</height>
         </rect>
        </property>
@@ -428,10 +541,10 @@
      <widget class="QTableWidget" name="registrationTable">
       <property name="geometry">
        <rect>
-        <x>190</x>
-        <y>250</y>
+        <x>200</x>
+        <y>240</y>
         <width>731</width>
-        <height>361</height>
+        <height>391</height>
        </rect>
       </property>
       <attribute name="horizontalHeaderDefaultSectionSize">
@@ -481,19 +594,29 @@
        <property name="text">
         <string>수강과목</string>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
       </column>
       <column>
        <property name="text">
         <string>성적</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
        </property>
       </column>
      </widget>
      <widget class="QLabel" name="label">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>20</y>
-        <width>271</width>
+        <x>60</x>
+        <y>30</y>
+        <width>161</width>
         <height>31</height>
        </rect>
       </property>
@@ -505,6 +628,24 @@
       </property>
       <property name="text">
        <string>학생 정보 등록</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="label_7">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>210</y>
+        <width>131</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>전체 학생 리스트</string>
       </property>
      </widget>
     </widget>
@@ -534,9 +675,9 @@
      <widget class="QFrame" name="DeleteFrame">
       <property name="geometry">
        <rect>
-        <x>90</x>
+        <x>70</x>
         <y>80</y>
-        <width>931</width>
+        <width>981</width>
         <height>81</height>
        </rect>
       </property>
@@ -559,7 +700,7 @@
       <widget class="QLabel" name="deleteStudentID">
        <property name="geometry">
         <rect>
-         <x>70</x>
+         <x>60</x>
          <y>30</y>
          <width>91</width>
          <height>18</height>
@@ -596,222 +737,7 @@
      <widget class="QTableWidget" name="deleteTable">
       <property name="geometry">
        <rect>
-        <x>190</x>
-        <y>230</y>
-        <width>731</width>
-        <height>411</height>
-       </rect>
-      </property>
-      <attribute name="horizontalHeaderDefaultSectionSize">
-       <number>120</number>
-      </attribute>
-      <column>
-       <property name="text">
-        <string>학번</string>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>13</pointsize>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>이름</string>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>13</pointsize>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>전공</string>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>13</pointsize>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>학년</string>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>13</pointsize>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>수강 과목</string>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>13</pointsize>
-        </font>
-       </property>
-      </column>
-      <column>
-       <property name="text">
-        <string>성적</string>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>13</pointsize>
-        </font>
-       </property>
-      </column>
-     </widget>
-    </widget>
-    <widget class="QWidget" name="addCourseTab">
-     <attribute name="title">
-      <string>수강 과목 추가</string>
-     </attribute>
-     <widget class="QLabel" name="label_2">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>20</y>
-        <width>161</width>
-        <height>31</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>18</pointsize>
-        <bold>true</bold>
-       </font>
-      </property>
-      <property name="text">
-       <string>수강 과목 추가</string>
-      </property>
-     </widget>
-     <widget class="QFrame" name="frame_2">
-      <property name="geometry">
-       <rect>
-        <x>40</x>
-        <y>70</y>
-        <width>1011</width>
-        <height>81</height>
-       </rect>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Shape::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Shadow::Raised</enum>
-      </property>
-      <widget class="QLineEdit" name="AddCourseStudentIDText">
-       <property name="geometry">
-        <rect>
-         <x>130</x>
-         <y>30</y>
-         <width>113</width>
-         <height>26</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="AddCourseStudentID">
-       <property name="geometry">
-        <rect>
-         <x>60</x>
-         <y>30</y>
-         <width>91</width>
-         <height>18</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>13</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>학번</string>
-       </property>
-      </widget>
-      <widget class="QLabel" name="AddCourse">
-       <property name="geometry">
-        <rect>
-         <x>300</x>
-         <y>30</y>
-         <width>111</width>
-         <height>18</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>13</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>수강 과목</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="AddCourseText">
-       <property name="geometry">
-        <rect>
-         <x>380</x>
-         <y>30</y>
-         <width>113</width>
-         <height>26</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="AddCourseGrade">
-       <property name="geometry">
-        <rect>
-         <x>540</x>
-         <y>30</y>
-         <width>51</width>
-         <height>18</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>13</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>성적</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="AddCourseGradeText">
-       <property name="geometry">
-        <rect>
-         <x>590</x>
-         <y>30</y>
-         <width>113</width>
-         <height>26</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="AddCoursePushButton">
-       <property name="geometry">
-        <rect>
-         <x>890</x>
-         <y>30</y>
-         <width>93</width>
-         <height>26</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>12</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>추가</string>
-       </property>
-      </widget>
-     </widget>
-     <widget class="QTableWidget" name="tableWidget_2">
-      <property name="geometry">
-       <rect>
-        <x>180</x>
+        <x>200</x>
         <y>240</y>
         <width>731</width>
         <height>391</height>
@@ -881,15 +807,33 @@
        </property>
       </column>
      </widget>
-    </widget>
-    <widget class="QWidget" name="tab_2">
-     <attribute name="title">
-      <string>수강 과목 삭제</string>
-     </attribute>
-     <widget class="QLabel" name="label_6">
+     <widget class="QLabel" name="label_9">
       <property name="geometry">
        <rect>
-        <x>40</x>
+        <x>200</x>
+        <y>210</y>
+        <width>131</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>전체 학생 리스트</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="addCourseTab">
+     <attribute name="title">
+      <string>수강 과목 추가</string>
+     </attribute>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
         <y>30</y>
         <width>161</width>
         <height>31</height>
@@ -902,15 +846,15 @@
        </font>
       </property>
       <property name="text">
-       <string>수강 과목 삭제</string>
+       <string>수강 과목 추가</string>
       </property>
      </widget>
-     <widget class="QFrame" name="frame_3">
+     <widget class="QFrame" name="frame_2">
       <property name="geometry">
        <rect>
-        <x>40</x>
-        <y>90</y>
-        <width>1011</width>
+        <x>70</x>
+        <y>80</y>
+        <width>991</width>
         <height>81</height>
        </rect>
       </property>
@@ -920,22 +864,22 @@
       <property name="frameShadow">
        <enum>QFrame::Shadow::Raised</enum>
       </property>
-      <widget class="QLineEdit" name="AddCourseStudentIDText_2">
+      <widget class="QLineEdit" name="addCourseStudentIDText">
        <property name="geometry">
         <rect>
-         <x>140</x>
+         <x>100</x>
          <y>30</y>
          <width>113</width>
          <height>26</height>
         </rect>
        </property>
       </widget>
-      <widget class="QLabel" name="AddCourseStudentID_2">
+      <widget class="QLabel" name="addCourseStudentID">
        <property name="geometry">
         <rect>
-         <x>60</x>
+         <x>50</x>
          <y>30</y>
-         <width>91</width>
+         <width>51</width>
          <height>18</height>
         </rect>
        </property>
@@ -948,12 +892,12 @@
         <string>학번</string>
        </property>
       </widget>
-      <widget class="QLabel" name="AddCourse_2">
+      <widget class="QLabel" name="addCourse">
        <property name="geometry">
         <rect>
-         <x>290</x>
+         <x>450</x>
          <y>30</y>
-         <width>111</width>
+         <width>81</width>
          <height>18</height>
         </rect>
        </property>
@@ -966,40 +910,156 @@
         <string>수강 과목</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="AddCourseText_2">
+      <widget class="QLabel" name="addCourseGrade">
        <property name="geometry">
         <rect>
-         <x>390</x>
+         <x>680</x>
          <y>30</y>
-         <width>113</width>
-         <height>26</height>
+         <width>51</width>
+         <height>18</height>
         </rect>
        </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>성적</string>
+       </property>
       </widget>
-      <widget class="QPushButton" name="AddCoursePushButton_2">
+      <widget class="QPushButton" name="addCoursePushButton">
        <property name="geometry">
         <rect>
          <x>870</x>
-         <y>20</y>
+         <y>30</y>
          <width>93</width>
          <height>26</height>
         </rect>
        </property>
        <property name="font">
         <font>
-         <pointsize>12</pointsize>
+         <pointsize>13</pointsize>
         </font>
        </property>
        <property name="text">
-        <string>삭제</string>
+        <string>추가</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="addCourseGradeComboBox">
+       <property name="geometry">
+        <rect>
+         <x>730</x>
+         <y>30</y>
+         <width>111</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>A+</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>A</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B+</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>C+</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>C</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>F</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label_13">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>30</y>
+         <width>41</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>전공</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="addCourseMajorComboBox">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>30</y>
+         <width>111</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>컴퓨터공학과</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>전자공학과</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>기계공학과</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="addCourseCourseNameComboBox">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>30</y>
+         <width>111</width>
+         <height>26</height>
+        </rect>
        </property>
       </widget>
      </widget>
-     <widget class="QTableWidget" name="tableWidget_6">
+     <widget class="QTableWidget" name="addCourseTable">
       <property name="geometry">
        <rect>
-        <x>180</x>
-        <y>220</y>
+        <x>200</x>
+        <y>240</y>
         <width>731</width>
         <height>391</height>
        </rect>
@@ -1068,12 +1128,30 @@
        </property>
       </column>
      </widget>
+     <widget class="QLabel" name="label_10">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>210</y>
+        <width>131</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>수강 과목 리스트</string>
+      </property>
+     </widget>
     </widget>
-    <widget class="QWidget" name="updateTab">
+    <widget class="QWidget" name="tab_2">
      <attribute name="title">
-      <string>학점 변경</string>
+      <string>수강 과목 삭제</string>
      </attribute>
-     <widget class="QLabel" name="label_5">
+     <widget class="QLabel" name="label_6">
       <property name="geometry">
        <rect>
         <x>60</x>
@@ -1089,15 +1167,15 @@
        </font>
       </property>
       <property name="text">
-       <string>성적 변경</string>
+       <string>수강 과목 삭제</string>
       </property>
      </widget>
-     <widget class="QFrame" name="frame_5">
+     <widget class="QFrame" name="deleteCourseFrame">
       <property name="geometry">
        <rect>
-        <x>50</x>
+        <x>70</x>
         <y>80</y>
-        <width>921</width>
+        <width>991</width>
         <height>81</height>
        </rect>
       </property>
@@ -1107,20 +1185,20 @@
       <property name="frameShadow">
        <enum>QFrame::Shadow::Raised</enum>
       </property>
-      <widget class="QLineEdit" name="updateStudentIDText">
+      <widget class="QLineEdit" name="deleteCourseStudentIDText">
        <property name="geometry">
         <rect>
-         <x>110</x>
+         <x>140</x>
          <y>30</y>
-         <width>113</width>
+         <width>121</width>
          <height>26</height>
         </rect>
        </property>
       </widget>
-      <widget class="QLabel" name="updateStudentID">
+      <widget class="QLabel" name="deleteCourseStudentID">
        <property name="geometry">
         <rect>
-         <x>50</x>
+         <x>80</x>
          <y>30</y>
          <width>91</width>
          <height>18</height>
@@ -1135,12 +1213,12 @@
         <string>학번</string>
        </property>
       </widget>
-      <widget class="QLabel" name="updateCourse">
+      <widget class="QLabel" name="deleteCourseNameText">
        <property name="geometry">
         <rect>
-         <x>270</x>
+         <x>590</x>
          <y>30</y>
-         <width>81</width>
+         <width>71</width>
          <height>18</height>
         </rect>
        </property>
@@ -1153,48 +1231,10 @@
         <string>수강 과목</string>
        </property>
       </widget>
-      <widget class="QLineEdit" name="updateCourseText">
+      <widget class="QPushButton" name="deleteCoursePushButton">
        <property name="geometry">
         <rect>
-         <x>370</x>
-         <y>30</y>
-         <width>121</width>
-         <height>26</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QLabel" name="updateGrade">
-       <property name="geometry">
-        <rect>
-         <x>540</x>
-         <y>30</y>
-         <width>51</width>
-         <height>18</height>
-        </rect>
-       </property>
-       <property name="font">
-        <font>
-         <pointsize>13</pointsize>
-        </font>
-       </property>
-       <property name="text">
-        <string>성적</string>
-       </property>
-      </widget>
-      <widget class="QLineEdit" name="updateGradeText">
-       <property name="geometry">
-        <rect>
-         <x>590</x>
-         <y>30</y>
-         <width>121</width>
-         <height>26</height>
-        </rect>
-       </property>
-      </widget>
-      <widget class="QPushButton" name="updateButton">
-       <property name="geometry">
-        <rect>
-         <x>800</x>
+         <x>870</x>
          <y>30</y>
          <width>93</width>
          <height>26</height>
@@ -1206,17 +1246,75 @@
         </font>
        </property>
        <property name="text">
-        <string>수정</string>
+        <string>삭제</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="deleteCourseMajorText">
+       <property name="geometry">
+        <rect>
+         <x>340</x>
+         <y>30</y>
+         <width>41</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>전공</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="deleteCourseMajorComboBox">
+       <property name="geometry">
+        <rect>
+         <x>400</x>
+         <y>30</y>
+         <width>121</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>컴퓨터공학과</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>전자공학과</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>기계공학과</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="deleteCourseNameComboBox">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>30</y>
+         <width>121</width>
+         <height>26</height>
+        </rect>
        </property>
       </widget>
      </widget>
-     <widget class="QTableWidget" name="tableWidget_5">
+     <widget class="QTableWidget" name="deleteCourseTable">
       <property name="geometry">
        <rect>
-        <x>150</x>
-        <y>210</y>
+        <x>200</x>
+        <y>240</y>
         <width>731</width>
-        <height>431</height>
+        <height>391</height>
        </rect>
       </property>
       <attribute name="horizontalHeaderDefaultSectionSize">
@@ -1283,6 +1381,345 @@
        </property>
       </column>
      </widget>
+     <widget class="QLabel" name="label_11">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>210</y>
+        <width>121</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>수강 과목 리스트</string>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="updateTab">
+     <attribute name="title">
+      <string>학점 변경</string>
+     </attribute>
+     <widget class="QLabel" name="label_5">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>30</y>
+        <width>161</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>18</pointsize>
+        <bold>true</bold>
+       </font>
+      </property>
+      <property name="text">
+       <string>성적 변경</string>
+      </property>
+     </widget>
+     <widget class="QFrame" name="updateGradeFrame">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>80</y>
+        <width>991</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::Shape::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Shadow::Raised</enum>
+      </property>
+      <widget class="QLineEdit" name="updateStudentIDText">
+       <property name="geometry">
+        <rect>
+         <x>100</x>
+         <y>30</y>
+         <width>113</width>
+         <height>26</height>
+        </rect>
+       </property>
+      </widget>
+      <widget class="QLabel" name="updateStudentID">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>30</y>
+         <width>41</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>학번</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="updateCourse">
+       <property name="geometry">
+        <rect>
+         <x>450</x>
+         <y>30</y>
+         <width>81</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>수강 과목</string>
+       </property>
+      </widget>
+      <widget class="QLabel" name="updateGrade">
+       <property name="geometry">
+        <rect>
+         <x>680</x>
+         <y>30</y>
+         <width>51</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>성적</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="updateButton">
+       <property name="geometry">
+        <rect>
+         <x>880</x>
+         <y>30</y>
+         <width>93</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>수정</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="updateMajorComboBox">
+       <property name="geometry">
+        <rect>
+         <x>300</x>
+         <y>30</y>
+         <width>111</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>컴퓨터공학과</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>전자공학과</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>기계공학과</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QLabel" name="label_14">
+       <property name="geometry">
+        <rect>
+         <x>250</x>
+         <y>30</y>
+         <width>41</width>
+         <height>18</height>
+        </rect>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>전공</string>
+       </property>
+      </widget>
+      <widget class="QComboBox" name="updateCourseGradeCombobox">
+       <property name="geometry">
+        <rect>
+         <x>730</x>
+         <y>30</y>
+         <width>111</width>
+         <height>26</height>
+        </rect>
+       </property>
+       <item>
+        <property name="text">
+         <string/>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>A+</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>A</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B+</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>B</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>C+</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>C</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>F</string>
+        </property>
+       </item>
+      </widget>
+      <widget class="QComboBox" name="updateCourseNameComboBox">
+       <property name="geometry">
+        <rect>
+         <x>530</x>
+         <y>30</y>
+         <width>111</width>
+         <height>26</height>
+        </rect>
+       </property>
+      </widget>
+     </widget>
+     <widget class="QTableWidget" name="upgradeGradeTable">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>240</y>
+        <width>731</width>
+        <height>391</height>
+       </rect>
+      </property>
+      <attribute name="horizontalHeaderDefaultSectionSize">
+       <number>120</number>
+      </attribute>
+      <column>
+       <property name="text">
+        <string>학번</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>이름</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>전공</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>학년</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>수강 과목</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+      </column>
+      <column>
+       <property name="text">
+        <string>성적</string>
+       </property>
+       <property name="font">
+        <font>
+         <pointsize>13</pointsize>
+        </font>
+       </property>
+      </column>
+     </widget>
+     <widget class="QLabel" name="label_12">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>210</y>
+        <width>111</width>
+        <height>18</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>수강 과목 리스트</string>
+      </property>
+     </widget>
     </widget>
    </widget>
   </widget>
@@ -1291,7 +1728,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1301</width>
+     <width>1240</width>
      <height>23</height>
     </rect>
    </property>
