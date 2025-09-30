@@ -27,7 +27,7 @@
      <number>-1</number>
     </property>
     <property name="currentIndex">
-     <number>4</number>
+     <number>5</number>
     </property>
     <widget class="QWidget" name="searchTab">
      <attribute name="title">
@@ -119,9 +119,9 @@
      <widget class="QTableWidget" name="searchTable">
       <property name="geometry">
        <rect>
-        <x>150</x>
+        <x>140</x>
         <y>200</y>
-        <width>851</width>
+        <width>861</width>
         <height>431</height>
        </rect>
       </property>
@@ -541,9 +541,9 @@
      <widget class="QTableWidget" name="registrationTable">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>190</x>
         <y>240</y>
-        <width>731</width>
+        <width>741</width>
         <height>391</height>
        </rect>
       </property>
@@ -737,9 +737,9 @@
      <widget class="QTableWidget" name="deleteTable">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>190</x>
         <y>240</y>
-        <width>731</width>
+        <width>741</width>
         <height>391</height>
        </rect>
       </property>
@@ -1058,9 +1058,9 @@
      <widget class="QTableWidget" name="addCourseTable">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>190</x>
         <y>240</y>
-        <width>731</width>
+        <width>741</width>
         <height>391</height>
        </rect>
       </property>
@@ -1311,9 +1311,9 @@
      <widget class="QTableWidget" name="deleteCourseTable">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>190</x>
         <y>240</y>
-        <width>731</width>
+        <width>741</width>
         <height>391</height>
        </rect>
       </property>
@@ -1632,9 +1632,9 @@
      <widget class="QTableWidget" name="upgradeGradeTable">
       <property name="geometry">
        <rect>
-        <x>200</x>
+        <x>190</x>
         <y>240</y>
-        <width>731</width>
+        <width>741</width>
         <height>391</height>
        </rect>
       </property>

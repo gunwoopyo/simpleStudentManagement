@@ -28,19 +28,19 @@ void management::insertStudent(int studentID, QString name, QString major, QStri
 
 void management::deleteStudent(int studentID){
     student* currentStudent = manageHead;
-    while(currentStudent != nullptr){
+    while(currentStudent != nullptr) {
         if(currentStudent->getStudentID() == studentID) {
-
-            if(currentStudent->studentPrev == nullptr) {   // 맨첫번째 노드일 경우니까 Prev 는 널이다.
-                if(currentStudent->studentNext == nullptr) {
+            if(currentStudent->studentPrev == nullptr) {
+                if (currentStudent->studentNext == nullptr) {
+                    // 노드가 마지막 1개 존재하는 경우.
                     manageHead = nullptr;
-                    delete currentStudent;
-                    return;
+                } else {
+                    // 헤드 노드가 가리키는 맨첫번째 노드인 경우
+                    manageHead = currentStudent->studentNext;
+                    currentStudent->studentNext->studentPrev = nullptr;
                 }
-                manageHead = currentStudent->studentNext;
-                currentStudent->studentNext->studentPrev = nullptr;
-
             }
+
             else if(currentStudent->studentNext == nullptr) {
                 currentStudent->studentPrev->studentNext = currentStudent->studentNext;
             }
@@ -50,11 +50,12 @@ void management::deleteStudent(int studentID){
                 currentStudent->studentNext->studentPrev = currentStudent->studentPrev;
             }
             delete currentStudent;
+            return;
         }
         currentStudent = currentStudent->studentNext;
     }
-
 }
+
 void management::debugInsertList() {
     int index = 0;
 
@@ -75,20 +76,21 @@ void management::debugInsertList() {
 }
 
 void management::debugCourseList() {
-    int index = 0;
     qDebug() << "======================================================================================";
-    if(management::manageHead == nullptr) {
-        qDebug() << "Student list is empty";
-        return ;
-    }
-    student* currentStudent = management::manageHead;
-    course* currentCourse = management::manageHead->courseList;
-    while(currentCourse != nullptr) {
-        qDebug() <<  "학번" << currentStudent->getStudentID()  <<  " 추가한 과목 " << currentCourse->getCourseName()  << " 노드"  << index  <<   " 이전 과목 주소" << currentCourse->coursePrev <<
-            " 현재 주소 :" << currentCourse <<" 다음주소 :" << currentCourse->courseNext;
-        currentStudent = currentStudent->studentNext;
-        currentCourse = currentCourse->courseNext;
-        index++;
+    if(management::manageHead->courseList == nullptr) {
+        qDebug() << "Student courseList is empty";
+        return;
+    } else {
+        student* currentStudent = management::manageHead;
+        while(currentStudent != nullptr) {
+            course* currentCourse = currentStudent->courseList;
+            while(currentCourse != nullptr) {
+                qDebug() <<  "학번" << currentStudent->getStudentID()  <<  " 추가한 과목 " << currentCourse->getCourseName()   <<   " 이전 과목 주소" << currentCourse->coursePrev <<
+                    " 현재 주소 :" << currentCourse <<" 다음주소 :" << currentCourse->courseNext;
+                currentCourse = currentCourse->courseNext;
+            }
+            return;
+        }
     }
 }
 
@@ -96,6 +98,7 @@ void management::addCourse(student* stn, QString n, QString g) {
     course* newCourse = new course(n, g);
     if(stn->courseList == nullptr) {
         stn->courseList = newCourse;
+        newCourse->coursePrev = nullptr;
     }
     else {
         course* currentCourse = stn->courseList;
@@ -108,39 +111,29 @@ void management::addCourse(student* stn, QString n, QString g) {
 }
 
 void management::deleteCourse(student* stn, QString courseName) {
-    qDebug() << "444444444444444 ";
     course* currentCourse = stn->courseList;
     while(currentCourse != nullptr) {
-        qDebug() << "5555555555555 ";
         if(currentCourse->getCourseName() == courseName)
         {  // 지우려는 객체로 진입
-            if(currentCourse->coursePrev == nullptr)
-            { qDebug() << "6666666 ";
-                if(currentCourse->courseNext == nullptr)
-                {
-                    qDebug() << "777777777 ";
+            if(currentCourse->coursePrev == nullptr){
+                if(currentCourse->courseNext == nullptr) {;
                     stn->courseList = nullptr;
-                    delete currentCourse;
-                    return;
                 }
-                    stn->courseList = currentCourse->courseNext->coursePrev ;
-                    delete currentCourse;
-                    return;
+                else {
+                    stn->courseList = currentCourse->courseNext ;
+                    currentCourse->courseNext->coursePrev = nullptr;
+                    qDebug() << "지울 주소 :" << currentCourse;
+                }
             }
-            else if (currentCourse->courseNext != nullptr) {
-                course* temp = currentCourse;
+            else if (currentCourse->coursePrev != nullptr && currentCourse->courseNext != nullptr) {
                 currentCourse->coursePrev->courseNext = currentCourse->courseNext;
                 currentCourse->courseNext->coursePrev = currentCourse->coursePrev;
-                delete temp;
-                return;
             }
             else {
-                course* temp = currentCourse;
                 currentCourse->coursePrev->courseNext = nullptr;
-                delete temp;
-                return;
             }
-
+            delete currentCourse;
+            return;
         }
         currentCourse = currentCourse->courseNext;
     }

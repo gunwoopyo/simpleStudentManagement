@@ -17,7 +17,7 @@ public:
     student* searchStudentID(int studentID);
 
     void debugInsertList();
-    void debugDeleteList();
+
     void debugCourseList();
 
 

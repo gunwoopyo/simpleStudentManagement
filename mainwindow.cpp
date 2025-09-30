@@ -45,15 +45,15 @@ void MainWindow::onTabChanged(int index)     // 탭 클릭시 행 및 내용 지
         deleteStudentTable();
         break;
     case 3: // 수업 추가 탭
-        //ui->addCourseTable->setRowCount(0);
+        ui->addCourseTable->setRowCount(0);
         // addCourseTable(); // 수업 추가 테이블 업데이트
         break;
     case 4: // 수업 삭제 탭
-        //ui->deleteCourseTable->setRowCount(0);
+        ui->deleteCourseTable->setRowCount(0);
         // updateDeleteCourseTable(); // 수업 삭제 테이블 업데이트
         break;
     case 5: // 학점 변경 탭
-        //ui->upgradeGradeTable->setRowCount(0);
+        ui->upgradeGradeTable->setRowCount(0);
         // updateUpgradeGradeTable(); // 학점 변경 테이블 업데이트
         break;
 
@@ -67,6 +67,7 @@ void MainWindow::onMajorChanged(const QString &major)
     ui->registrationCourseNameComboBox->clear();  // 기존 과목 제거
     ui->addCourseCourseNameComboBox->clear();
     ui->updateCourseNameComboBox->clear();
+    ui->deleteCourseNameComboBox->clear();
     ui->deleteCourseNameComboBox->clear();
 
     if (major == "컴퓨터공학과") {
@@ -171,21 +172,22 @@ void MainWindow::registrationTable() {
         ui->registrationTable->setItem(row, 1, new QTableWidgetItem(currentStudent->getName()));
         ui->registrationTable->setItem(row, 2, new QTableWidgetItem(currentStudent->getMajor()));
         ui->registrationTable->setItem(row, 3, new QTableWidgetItem(currentStudent->getYear()));
-        ui->registrationTable->setItem(row, 4, new QTableWidgetItem(currentStudent->courseList->getCourseName()));
-        ui->registrationTable->setItem(row, 5, new QTableWidgetItem(currentStudent->courseList->getGrade()));
+        if(currentStudent->courseList != nullptr) {
+            ui->registrationTable->setItem(row, 4, new QTableWidgetItem(currentStudent->courseList->getCourseName()));
+            ui->registrationTable->setItem(row, 5, new QTableWidgetItem(currentStudent->courseList->getGrade()));
+        }
         row++;
         currentStudent = currentStudent->studentNext;
     }
 
 }
 
-void
 
 void MainWindow::on_deleteStudentPushButton_clicked() {
     int studentID = ui->deleteStudentText->text().toInt();
     if(!manager->checkStudentID(studentID)){    //   중복되니까 false 지만 !로 true 만들고 함수 내로 진입
         manager->deleteStudent(studentID);
-        manager->debugDeleteList();
+        manager->debugInsertList();
         ui->deleteStudentText->clear();
         deleteStudentTable();
         return;
@@ -204,8 +206,10 @@ void MainWindow::deleteStudentTable() {
         ui->deleteTable->setItem(row, 1, new QTableWidgetItem(currentStudent->getName()));
         ui->deleteTable->setItem(row, 2, new QTableWidgetItem(currentStudent->getMajor()));
         ui->deleteTable->setItem(row, 3, new QTableWidgetItem(currentStudent->getYear()));
+        if (currentStudent->courseList != nullptr) {
         ui->deleteTable->setItem(row, 4, new QTableWidgetItem(currentStudent->courseList->getCourseName()));
         ui->deleteTable->setItem(row, 5, new QTableWidgetItem(currentStudent->courseList->getGrade()));
+        }
         row++;
         currentStudent = currentStudent->studentNext;
     }
@@ -269,24 +273,32 @@ void MainWindow:: on_allStudentSearchButton_clicked(){
         ui->searchStudentIDText->setFocus();
         return;
     }
+
     ui->searchTable->setRowCount(0);
     int row = 0;
     student* currentStudent = management::manageHead;
     course* currentCourse = currentStudent->courseList;
     while (currentStudent != nullptr) { // 행으로 이동
-        while(currentCourse != nullptr) {
-        ui->searchTable->insertRow(row);  // 행 추가
-        ui->searchTable->setItem(row, 0, new QTableWidgetItem(QString::number(currentStudent->getStudentID())));
-        ui->searchTable->setItem(row, 1, new QTableWidgetItem(currentStudent->getName()));
-        ui->searchTable->setItem(row, 2, new QTableWidgetItem(currentStudent->getMajor()));
-        ui->searchTable->setItem(row, 3, new QTableWidgetItem(currentStudent->getYear()));
-        ui->searchTable->setItem(row, 4, new QTableWidgetItem(currentCourse->getCourseName()));
-        ui->searchTable->setItem(row, 5, new QTableWidgetItem(currentCourse->getGrade()));
-        row++;
-        currentCourse = currentCourse->courseNext;
+
+        if (currentCourse == nullptr) {
+            ui->searchTable->insertRow(row);  // 행 추가
+            ui->searchTable->setItem(row, 0, new QTableWidgetItem(QString::number(currentStudent->getStudentID())));
+            ui->searchTable->setItem(row, 1, new QTableWidgetItem(currentStudent->getName()));
+            ui->searchTable->setItem(row, 2, new QTableWidgetItem(currentStudent->getMajor()));
+            ui->searchTable->setItem(row, 3, new QTableWidgetItem(currentStudent->getYear()));
+            return;
+        } else {
+            while(currentCourse != nullptr)
+            ui->searchTable->insertRow(row);  // 행 추가
+            ui->searchTable->setItem(row, 0, new QTableWidgetItem(QString::number(currentStudent->getStudentID())));
+            ui->searchTable->setItem(row, 1, new QTableWidgetItem(currentStudent->getName()));
+            ui->searchTable->setItem(row, 2, new QTableWidgetItem(currentStudent->getMajor()));
+            ui->searchTable->setItem(row, 3, new QTableWidgetItem(currentStudent->getYear()));
+            ui->searchTable->setItem(row, 4, new QTableWidgetItem(currentCourse->getCourseName()));
+            ui->searchTable->setItem(row, 5, new QTableWidgetItem(currentCourse->getGrade()));
+            currentCourse = currentCourse->courseNext;
+            row++;
         }
-        row++;
-        currentStudent = currentStudent->studentNext;
     }
 }
 
@@ -305,7 +317,8 @@ void MainWindow::on_addCoursePushButton_clicked(){
         return;
     }
     else {
-        if(stn->getMajor() == major) {
+        if(stn->getMajor() == major)
+        {
             course * currentCourse = stn->courseList;
             while(currentCourse != nullptr) {
                 if(currentCourse->getCourseName() == courseName) {
@@ -322,11 +335,49 @@ void MainWindow::on_addCoursePushButton_clicked(){
             ui->addCourseMajorComboBox->setCurrentIndex(0);
             ui->addCourseCourseNameComboBox->setCurrentIndex(0);
             ui->addCourseGradeComboBox->setCurrentIndex(0);
+        } else {
+            QMessageBox::warning(this, "실패", "전공을 다시 선택해주세요");
+            ui->addCourseStudentIDText->setFocus();
             return;
+
         }
-        QMessageBox::warning(this, "실패", "전공을 다시 선택해주세요");
-        ui->addCourseStudentIDText->setFocus();
-        return;
+
+
+    }
+}
+
+
+void MainWindow::on_deleteCoursePushButton_clicked() {
+    int studentID = ui->deleteCourseStudentIDText->text().toInt();
+    QString major = ui->deleteCourseMajorComboBox->currentText();
+    QString courseName = ui->deleteCourseNameComboBox->currentText();
+
+    if(manager->checkStudentID(studentID))  {    //중복이면 false  -> ! 붙이기
+        QMessageBox::warning(this, "실패", "존재하는 학번이 없습니다.");
+        ui->deleteCourseStudentIDText->setFocus();
+        return ;
+    }
+    else {
+        student* stn = manager->searchStudentID(studentID);
+        course* currentCourse = stn->courseList;
+        while(currentCourse != nullptr)
+        {
+            if(currentCourse->getCourseName() == courseName)
+            {
+                qDebug() << "끝 stn 과목 리스트 주소 : " <<  stn->courseList;
+                manager->deleteCourse(stn, courseName);
+                manager->debugCourseList();
+                deleteCourseTable(stn);
+                ui->deleteCourseStudentIDText->clear();
+                ui->deleteCourseMajorComboBox->setCurrentIndex(0);
+                ui->deleteCourseNameComboBox->setCurrentIndex(0);
+                return;
+            }
+            currentCourse = currentCourse->courseNext;
+        }
+            QMessageBox::warning(this, "실패", "존재하는 과목이 없습니다.");
+            ui->updateCourseNameComboBox->setFocus();
+            return;
     }
 }
 
@@ -346,46 +397,12 @@ void MainWindow::addCourseTable(student* current) {
         currentCourse = currentCourse->courseNext;
     }
 }
-
-void MainWindow::on_deleteCoursePushButton_clicked() {
-    int studentID = ui->deleteCourseStudentIDText->text().toInt();
-    QString major = ui->deleteCourseMajorComboBox->currentText();
-    QString courseName = ui->deleteCourseNameComboBox->currentText();
-
-    student* stn = manager->searchStudentID(studentID);    // 학번 있으면 객체 반환.
-    qDebug() << "stn 주소 : "<< stn;
-    if (stn == nullptr) {
-        QMessageBox::warning(this, "실패", "존재하는 학번이 없습니다.");
-        ui->updateCourseNameComboBox->setFocus();
-        return ;
-    }
-    else {
-        qDebug() << "111111111111 ";
-        course* currentCourse = stn->courseList;
-        while(currentCourse != nullptr)
-        {
-            qDebug() << "222222222222 ";
-            if(currentCourse->getCourseName() == courseName)
-            {
-                qDebug() << "33333333333333 ";
-                manager->deleteCourse(stn, courseName);
-                ui->deleteStudentText->clear();
-                deleteCourseTable(stn);
-                return;
-            }
-            currentCourse = currentCourse->courseNext;
-        }
-        QMessageBox::warning(this, "실패", "존재하는 과목이 없습니다.");
-        ui->updateCourseNameComboBox->setFocus();
-        return ;
-    }
-}
-
 void MainWindow::deleteCourseTable(student* stn) {
-    course* currentCourse = stn->courseList;
-    ui->addCourseTable->setRowCount(0);
+    ui->deleteCourseTable->setRowCount(0);
     int row = 0;
-    while(stn != nullptr) {
+    course* currentCourse = stn->courseList;
+    while(currentCourse != nullptr) {
+        qDebug() << "11";
         ui->deleteCourseTable->insertRow(row);
         ui->deleteCourseTable->setItem(row, 0, new QTableWidgetItem(QString::number(stn->getStudentID())));
         ui->deleteCourseTable->setItem(row, 1, new QTableWidgetItem(stn->getName()));
@@ -396,7 +413,7 @@ void MainWindow::deleteCourseTable(student* stn) {
         row++;
         currentCourse = currentCourse->courseNext;
     }
-
+    qDebug() << "12";
 }
 
 
@@ -414,8 +431,6 @@ void MainWindow::on_updateButton_clicked() {
     while(currentStudent != nullptr) {
         if(currentStudent->getStudentID() == studentID) {
             student* stn = manager->searchStudentID(studentID); //   객체 존재하면 객체 주소 리턴
-            qDebug() << "stn 주소 " << stn;
-            qDebug() << "stn 과목 리스트 헤드 주소 " << stn->courseList;
 
             if(stn->courseList == nullptr){
                 QMessageBox::warning(this, "실패", "수강 과목이 존재하지 않습니다.");
@@ -426,7 +441,6 @@ void MainWindow::on_updateButton_clicked() {
             int count = 0;
             course* currentCourse = stn->courseList;
             while(currentCourse != nullptr) {
-                qDebug() << "22222222 " ;
                 if(currentCourse->getCourseName() == coursename)
                     count++;
 
@@ -437,7 +451,6 @@ void MainWindow::on_updateButton_clicked() {
                 ui->updateCourseNameComboBox->setFocus();
                 return;
             }
-            qDebug() << "3333333 " ;
             manager->updateGrade(stn, coursename, grade);
             upgradeGradeTable(stn,coursename);
             ui->updateStudentIDText->clear();

@@ -171,7 +171,7 @@ public:
         __qtablewidgetitem6->setFont(font);
         searchTable->setHorizontalHeaderItem(6, __qtablewidgetitem6);
         searchTable->setObjectName("searchTable");
-        searchTable->setGeometry(QRect(150, 200, 851, 431));
+        searchTable->setGeometry(QRect(140, 200, 861, 431));
         searchTable->horizontalHeader()->setDefaultSectionSize(120);
         label_4 = new QLabel(searchTab);
         label_4->setObjectName("label_4");
@@ -279,7 +279,7 @@ public:
         __qtablewidgetitem12->setFont(font);
         registrationTable->setHorizontalHeaderItem(5, __qtablewidgetitem12);
         registrationTable->setObjectName("registrationTable");
-        registrationTable->setGeometry(QRect(200, 240, 731, 391));
+        registrationTable->setGeometry(QRect(190, 240, 741, 391));
         registrationTable->horizontalHeader()->setDefaultSectionSize(120);
         label = new QLabel(registrationTab);
         label->setObjectName("label");
@@ -334,7 +334,7 @@ public:
         __qtablewidgetitem18->setFont(font);
         deleteTable->setHorizontalHeaderItem(5, __qtablewidgetitem18);
         deleteTable->setObjectName("deleteTable");
-        deleteTable->setGeometry(QRect(200, 240, 731, 391));
+        deleteTable->setGeometry(QRect(190, 240, 741, 391));
         deleteTable->horizontalHeader()->setDefaultSectionSize(120);
         label_9 = new QLabel(tab);
         label_9->setObjectName("label_9");
@@ -418,7 +418,7 @@ public:
         __qtablewidgetitem24->setFont(font);
         addCourseTable->setHorizontalHeaderItem(5, __qtablewidgetitem24);
         addCourseTable->setObjectName("addCourseTable");
-        addCourseTable->setGeometry(QRect(200, 240, 731, 391));
+        addCourseTable->setGeometry(QRect(190, 240, 741, 391));
         addCourseTable->horizontalHeader()->setDefaultSectionSize(120);
         label_10 = new QLabel(addCourseTab);
         label_10->setObjectName("label_10");
@@ -487,7 +487,7 @@ public:
         __qtablewidgetitem30->setFont(font);
         deleteCourseTable->setHorizontalHeaderItem(5, __qtablewidgetitem30);
         deleteCourseTable->setObjectName("deleteCourseTable");
-        deleteCourseTable->setGeometry(QRect(200, 240, 731, 391));
+        deleteCourseTable->setGeometry(QRect(190, 240, 741, 391));
         deleteCourseTable->horizontalHeader()->setDefaultSectionSize(120);
         label_11 = new QLabel(tab_2);
         label_11->setObjectName("label_11");
@@ -571,7 +571,7 @@ public:
         __qtablewidgetitem36->setFont(font);
         upgradeGradeTable->setHorizontalHeaderItem(5, __qtablewidgetitem36);
         upgradeGradeTable->setObjectName("upgradeGradeTable");
-        upgradeGradeTable->setGeometry(QRect(200, 240, 731, 391));
+        upgradeGradeTable->setGeometry(QRect(190, 240, 741, 391));
         upgradeGradeTable->horizontalHeader()->setDefaultSectionSize(120);
         label_12 = new QLabel(updateTab);
         label_12->setObjectName("label_12");
@@ -589,7 +589,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(4);
+        tabWidget->setCurrentIndex(5);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
