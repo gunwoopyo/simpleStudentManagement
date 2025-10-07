@@ -16,39 +16,38 @@ public:
     management* manager= new management();
 private:
     Ui::MainWindow *ui;
+private slots:
+    void onMajorChanged(const QString &major);  // 전공 변경 슬롯
+    void onTabChanged(int index);  // 탭 변경 시 호출될 슬롯
 public slots:
-    void on_registrationPushButton_clicked();
-    void registrationTable(); // 학생 등록 테이블
 
-    void on_deleteStudentPushButton_clicked();
-    void deleteStudentTable();
-
-    void on_studentSearchButton_clicked();
-    void searchStudentTable(student* stn);
-    void on_allStudentSearchButton_clicked();
-
-    void on_addCoursePushButton_clicked();
-    void addCourseTable(student* stn); //과목 목록 테이블
-
-    void on_deleteCoursePushButton_clicked();
-    void deleteCourseTable(student* stn); //과목 목록 테이블
+    void on_studentSearchButton_clicked();      // 학생 조회
+    void on_allStudentSearchButton_clicked();   // 학생 전체 조회
+    void searchStudentTable(int stnID, QString year, QString major);
+    void searchClear();
 
 
-    void on_updateButton_clicked();
-    void upgradeGradeTable(student* stn, QString coursename);
+    void on_registrationPushButton_clicked();    // 학생 등록
+    void on_deleteStudentPushButton_clicked();    // 학생 삭제
+    void registrationTable();
+    void registrationDeleteClear();
 
+
+    void on_courseSearchPushButton_clicked();   // 과목 조회
+    void on_courseAddPushButton_clicked();      // 과목 추가
+    void on_courseDeletePushButton_clicked();   // 과목 삭제
+    void courseTable(student* stn);
+    void courseFrameClear();
+
+
+    void on_gradeSearchButton_clicked();         // 성적 조회
+    void on_gradeRegistrationButton_clicked();   // 성적 등록
+    void gradeTable(student* stn);
+    void gradeFrameClear();
 
     void clearAllStudents();
-
-private slots:
-    void onTabChanged(int index);  // 탭 변경 시 호출될 슬롯
-    void onMajorChanged(const QString &major);  // 전공 변경 슬롯
 };
 
 #endif // MAINWINDOW_H
-
-
-
-
 
 

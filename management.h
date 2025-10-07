@@ -5,10 +5,10 @@
 class management {
 public:
     static student* manageHead;
-    void insertStudent(int studentID, QString name, QString major, QString year, QString courseName, QString grade);
+    void insertStudent(int studentID, QString name, QString major, QString year);
     void deleteStudent(int studentID);
 
-    void addCourse(student* stn, QString courseName, QString courseGrade);
+    void addCourse(student* stn, QString courseName);
     void deleteCourse(student* stn, QString courseName);
 
     void updateGrade(student* stn, QString courseName, QString grade);
@@ -19,15 +19,8 @@ public:
     void debugInsertList();
 
     void debugCourseList();
-
-
-
-
 private slots:
-
-
 public slots:
-
 };
 
 

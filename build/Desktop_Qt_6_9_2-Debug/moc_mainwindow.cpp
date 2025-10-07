@@ -39,75 +39,86 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
         "MainWindow",
-        "on_registrationPushButton_clicked",
+        "onMajorChanged",
         "",
-        "registrationTable",
-        "on_deleteStudentPushButton_clicked",
-        "deleteStudentTable",
-        "on_studentSearchButton_clicked",
-        "searchStudentTable",
-        "student*",
-        "stn",
-        "on_allStudentSearchButton_clicked",
-        "on_addCoursePushButton_clicked",
-        "addCourseTable",
-        "on_deleteCoursePushButton_clicked",
-        "deleteCourseTable",
-        "on_updateButton_clicked",
-        "upgradeGradeTable",
-        "coursename",
-        "clearAllStudents",
+        "major",
         "onTabChanged",
         "index",
-        "onMajorChanged",
-        "major"
+        "on_studentSearchButton_clicked",
+        "on_allStudentSearchButton_clicked",
+        "searchStudentTable",
+        "stnID",
+        "year",
+        "searchClear",
+        "on_registrationPushButton_clicked",
+        "on_deleteStudentPushButton_clicked",
+        "registrationTable",
+        "registrationDeleteClear",
+        "on_courseSearchPushButton_clicked",
+        "on_courseAddPushButton_clicked",
+        "on_courseDeletePushButton_clicked",
+        "courseTable",
+        "student*",
+        "stn",
+        "courseFrameClear",
+        "on_gradeSearchButton_clicked",
+        "on_gradeRegistrationButton_clicked",
+        "gradeTable",
+        "gradeFrameClear",
+        "clearAllStudents"
     };
 
     QtMocHelpers::UintData qt_methods {
-        // Slot 'on_registrationPushButton_clicked'
-        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'registrationTable'
-        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'on_deleteStudentPushButton_clicked'
-        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'deleteStudentTable'
-        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'onMajorChanged'
+        QtMocHelpers::SlotData<void(const QString &)>(1, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::QString, 3 },
+        }}),
+        // Slot 'onTabChanged'
+        QtMocHelpers::SlotData<void(int)>(4, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 5 },
+        }}),
         // Slot 'on_studentSearchButton_clicked'
         QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'searchStudentTable'
-        QtMocHelpers::SlotData<void(student *)>(7, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 8, 9 },
-        }}),
         // Slot 'on_allStudentSearchButton_clicked'
-        QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'on_addCoursePushButton_clicked'
+        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'searchStudentTable'
+        QtMocHelpers::SlotData<void(int, QString, QString)>(8, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::Int, 9 }, { QMetaType::QString, 10 }, { QMetaType::QString, 3 },
+        }}),
+        // Slot 'searchClear'
         QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'addCourseTable'
-        QtMocHelpers::SlotData<void(student *)>(12, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 8, 9 },
-        }}),
-        // Slot 'on_deleteCoursePushButton_clicked'
+        // Slot 'on_registrationPushButton_clicked'
+        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'on_deleteStudentPushButton_clicked'
         QtMocHelpers::SlotData<void()>(13, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'deleteCourseTable'
-        QtMocHelpers::SlotData<void(student *)>(14, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 8, 9 },
-        }}),
-        // Slot 'on_updateButton_clicked'
+        // Slot 'registrationTable'
+        QtMocHelpers::SlotData<void()>(14, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'registrationDeleteClear'
         QtMocHelpers::SlotData<void()>(15, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'upgradeGradeTable'
-        QtMocHelpers::SlotData<void(student *, QString)>(16, 2, QMC::AccessPublic, QMetaType::Void, {{
-            { 0x80000000 | 8, 9 }, { QMetaType::QString, 17 },
-        }}),
-        // Slot 'clearAllStudents'
+        // Slot 'on_courseSearchPushButton_clicked'
+        QtMocHelpers::SlotData<void()>(16, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'on_courseAddPushButton_clicked'
+        QtMocHelpers::SlotData<void()>(17, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'on_courseDeletePushButton_clicked'
         QtMocHelpers::SlotData<void()>(18, 2, QMC::AccessPublic, QMetaType::Void),
-        // Slot 'onTabChanged'
-        QtMocHelpers::SlotData<void(int)>(19, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::Int, 20 },
+        // Slot 'courseTable'
+        QtMocHelpers::SlotData<void(student *)>(19, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 20, 21 },
         }}),
-        // Slot 'onMajorChanged'
-        QtMocHelpers::SlotData<void(const QString &)>(21, 2, QMC::AccessPrivate, QMetaType::Void, {{
-            { QMetaType::QString, 22 },
+        // Slot 'courseFrameClear'
+        QtMocHelpers::SlotData<void()>(22, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'on_gradeSearchButton_clicked'
+        QtMocHelpers::SlotData<void()>(23, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'on_gradeRegistrationButton_clicked'
+        QtMocHelpers::SlotData<void()>(24, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'gradeTable'
+        QtMocHelpers::SlotData<void(student *)>(25, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { 0x80000000 | 20, 21 },
         }}),
+        // Slot 'gradeFrameClear'
+        QtMocHelpers::SlotData<void()>(26, 2, QMC::AccessPublic, QMetaType::Void),
+        // Slot 'clearAllStudents'
+        QtMocHelpers::SlotData<void()>(27, 2, QMC::AccessPublic, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -131,22 +142,26 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     auto *_t = static_cast<MainWindow *>(_o);
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
-        case 0: _t->on_registrationPushButton_clicked(); break;
-        case 1: _t->registrationTable(); break;
-        case 2: _t->on_deleteStudentPushButton_clicked(); break;
-        case 3: _t->deleteStudentTable(); break;
-        case 4: _t->on_studentSearchButton_clicked(); break;
-        case 5: _t->searchStudentTable((*reinterpret_cast< std::add_pointer_t<student*>>(_a[1]))); break;
-        case 6: _t->on_allStudentSearchButton_clicked(); break;
-        case 7: _t->on_addCoursePushButton_clicked(); break;
-        case 8: _t->addCourseTable((*reinterpret_cast< std::add_pointer_t<student*>>(_a[1]))); break;
-        case 9: _t->on_deleteCoursePushButton_clicked(); break;
-        case 10: _t->deleteCourseTable((*reinterpret_cast< std::add_pointer_t<student*>>(_a[1]))); break;
-        case 11: _t->on_updateButton_clicked(); break;
-        case 12: _t->upgradeGradeTable((*reinterpret_cast< std::add_pointer_t<student*>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2]))); break;
-        case 13: _t->clearAllStudents(); break;
-        case 14: _t->onTabChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
-        case 15: _t->onMajorChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 0: _t->onMajorChanged((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1]))); break;
+        case 1: _t->onTabChanged((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 2: _t->on_studentSearchButton_clicked(); break;
+        case 3: _t->on_allStudentSearchButton_clicked(); break;
+        case 4: _t->searchStudentTable((*reinterpret_cast< std::add_pointer_t<int>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<QString>>(_a[3]))); break;
+        case 5: _t->searchClear(); break;
+        case 6: _t->on_registrationPushButton_clicked(); break;
+        case 7: _t->on_deleteStudentPushButton_clicked(); break;
+        case 8: _t->registrationTable(); break;
+        case 9: _t->registrationDeleteClear(); break;
+        case 10: _t->on_courseSearchPushButton_clicked(); break;
+        case 11: _t->on_courseAddPushButton_clicked(); break;
+        case 12: _t->on_courseDeletePushButton_clicked(); break;
+        case 13: _t->courseTable((*reinterpret_cast< std::add_pointer_t<student*>>(_a[1]))); break;
+        case 14: _t->courseFrameClear(); break;
+        case 15: _t->on_gradeSearchButton_clicked(); break;
+        case 16: _t->on_gradeRegistrationButton_clicked(); break;
+        case 17: _t->gradeTable((*reinterpret_cast< std::add_pointer_t<student*>>(_a[1]))); break;
+        case 18: _t->gradeFrameClear(); break;
+        case 19: _t->clearAllStudents(); break;
         default: ;
         }
     }
@@ -171,14 +186,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 16)
+        if (_id < 20)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 16;
+        _id -= 20;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 16)
+        if (_id < 20)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 16;
+        _id -= 20;
     }
     return _id;
 }
