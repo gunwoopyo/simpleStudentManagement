@@ -30,16 +30,18 @@ void MainWindow::onTabChanged(int index)     // 탭 클릭시 행 및 내용 지
         ui->searchTable->setRowCount(0);
         //updateSearchTable();
         break;
-    case 1: // 등록 탭
+    case 1: // 등록 및 삭제 탭
         ui->registrationTable->setRowCount(0);
         registrationTable();
         break;
 
-    case 2: // 수업 추가 탭
+    case 2: // 과목 탭
         ui->courseSearchTable->setRowCount(0);
+        courseFrameClear();
         break;
-     case 3: // 수업 삭제 탭
-         ui->upgradeGradeTable->setRowCount(0);
+     case 3: // 성적 탭
+        ui->upgradeGradeTable->setRowCount(0);
+        gradeFrameClear();
         break;
 
         default:
@@ -85,19 +87,151 @@ void MainWindow::onMajorChanged(const QString &major)
         ui->updateCourseNameComboBox->addItem("재료역학");
     }
 }
-void MainWindow::registrationDeleteClear() {
-    ui->registrationStudentIDText->clear();
-    ui->registrationNameText->clear();
-    ui->registrationYearComboBox->setCurrentIndex(0);
-    ui->registrationMajorComboBox->setCurrentIndex(0);
+
+
+void MainWindow::on_ascPushButton_clicked() {
+    int col = ui->sortComboBox->currentIndex();
+    bubbleSortTable(ui->searchTable, col-1, true);
 }
+
+void MainWindow::on_descPushButton_clicked() {
+    int col = ui->sortComboBox->currentIndex();
+    bubbleSortTable(ui->searchTable, col-1, false);
+}
+
+void MainWindow::bubbleSortTable(QTableWidget* table, int column, bool ascending)
+{
+    int rows = table->rowCount();
+    int cols = table->columnCount();
+
+    for (int i = 0; i < rows - 1; ++i) {
+        for (int j = 0; j < rows - i - 1; ++j) {
+            QTableWidgetItem* a = table->item(j, column);
+            QTableWidgetItem* b = table->item(j + 1, column);
+            if (!a || !b) continue;
+
+            QString aText = a->text();
+            QString bText = b->text();
+
+            // 숫자인 경우 비교
+            bool okA, okB;
+            double numA = aText.toDouble(&okA);
+            double numB = bText.toDouble(&okB);
+
+            bool swap = (okA && okB)
+                            ? (ascending ? numA > numB : numA < numB)
+                            : (ascending ? aText > bText : aText < bText);
+
+            if (swap) {
+                // 행 전체 교환
+                for (int c = 0; c < cols; ++c) {
+                    QTableWidgetItem* tmp = table->takeItem(j, c);
+                    table->setItem(j, c, table->takeItem(j + 1, c));
+                    table->setItem(j + 1, c, tmp);
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+void MainWindow::on_studentSearchButton_clicked() {
+    int studentID = ui->searchStudentIDText->text().toInt();
+    QString year = ui->searchYearComboBox->currentText();
+    QString major = ui->searchMajorComboBox->currentText();
+
+    if(studentID == 0 && year.isEmpty() && major.isEmpty()) {    // 모두 빈칸인 경우
+        QMessageBox::warning(this, "실패", "정보를 입력해주세요");
+        searchClear();
+        return;
+    }
+    searchStudentTable(studentID, year, major);
+
+    if (ui->searchTable->rowCount() == 0) {
+        QMessageBox::warning(this, "실패", "학생 정보를 확인해주세요");
+        searchClear();
+        return;
+    } else {
+        QMessageBox::information(this, "성공", "조회가 완료되었습니다.");
+        searchClear();
+        return;
+    }
+}
+void MainWindow:: on_allStudentSearchButton_clicked(){
+    if(management::manageHead == nullptr) {
+        QMessageBox::warning(this, "실패", "존재하는 학번이 없습니다.");
+        ui->searchStudentIDText->setFocus();
+        return;
+    }
+    else {
+        ui->searchTable->setRowCount(0);
+        int row = 0;
+        student* currentStudent = management::manageHead;
+        course* currentCourse = currentStudent->courseList;
+        while (currentStudent != nullptr) { // 행으로 이동
+            ui->searchTable->insertRow(row);  // 행 추가
+            ui->searchTable->setItem(row, 0, new QTableWidgetItem(QString::number(currentStudent->getStudentID())));
+            ui->searchTable->setItem(row, 1, new QTableWidgetItem(currentStudent->getName()));
+            ui->searchTable->setItem(row, 2, new QTableWidgetItem(currentStudent->getYear()));
+            ui->searchTable->setItem(row, 3, new QTableWidgetItem(currentStudent->getMajor()));
+            ui->searchTable->setItem(row, 4, new QTableWidgetItem(QString::number(currentStudent->getGPA())));
+
+            row++;
+            currentStudent = currentStudent->studentNext;
+        }
+    }
+}
+void MainWindow::searchStudentTable(int stnID, QString year, QString major) {
+    ui->searchTable->setRowCount(0);
+    student* currentStudent = management::manageHead;
+    int row = 0;
+    while (currentStudent) {
+        bool match = true;
+        if (stnID != 0 && currentStudent->getStudentID() != stnID)
+            match = false;
+        if (!year.isEmpty() && currentStudent->getYear() != year)
+            match = false;
+        if (!major.isEmpty() && !currentStudent->getMajor().contains(major, Qt::CaseInsensitive))
+            match = false;
+
+        if (match) {
+            ui->searchTable->insertRow(row);
+            ui->searchTable->setItem(row, 0, new QTableWidgetItem(QString::number(currentStudent->getStudentID())));
+            ui->searchTable->setItem(row, 1, new QTableWidgetItem(currentStudent->getName()));
+            ui->searchTable->setItem(row, 2, new QTableWidgetItem(currentStudent->getYear()));
+            ui->searchTable->setItem(row, 3, new QTableWidgetItem(currentStudent->getMajor()));
+            ui->searchTable->setItem(row, 4, new QTableWidgetItem(QString::number(currentStudent->getGPA())));
+
+        }
+        currentStudent = currentStudent->studentNext;
+    }
+}
+void MainWindow::searchClear() {
+    ui->searchStudentIDText->clear();
+    ui->searchYearComboBox->setCurrentIndex(0);
+    ui->searchMajorComboBox->setCurrentIndex(0);
+}
+
+
+
+
+
+
+
 
 void MainWindow::on_registrationPushButton_clicked() {
     int studentID = ui->registrationStudentIDText->text().toInt();
     QString name = ui->registrationNameText->text();
     QString year = ui->registrationYearComboBox->currentText();
     QString major = ui->registrationMajorComboBox->currentText();
-
     if (studentID == 0 || name.isEmpty() || year.isEmpty() || major.isEmpty()) {
         QMessageBox::warning(this, "실패", "정보를 모두 입력해주세요");
         registrationDeleteClear();
@@ -149,16 +283,21 @@ void MainWindow::registrationTable() {
         currentStudent = currentStudent->studentNext;
     }
 }
-
-
-
-
-void MainWindow::courseFrameClear() {
-    ui->addDeleteCourseStudentIDText->clear();
-    ui->addDeleteYearComboBox->setCurrentIndex(0);
-    ui->addDeleteCourseMajorComboBox->setCurrentIndex(0);
-    ui->addDeleteCourseNameComboBox->setCurrentIndex(0);
+void MainWindow::registrationDeleteClear() {
+    ui->registrationStudentIDText->clear();
+    ui->registrationNameText->clear();
+    ui->registrationYearComboBox->setCurrentIndex(0);
+    ui->registrationMajorComboBox->setCurrentIndex(0);
 }
+
+
+
+
+
+
+
+
+
 void MainWindow::on_courseSearchPushButton_clicked() {
     int studentID = ui->addDeleteCourseStudentIDText->text().toInt();
     QString year = ui->addDeleteYearComboBox->currentText();
@@ -298,6 +437,14 @@ void MainWindow::courseTable(student* stn) {
         }
     }
 }
+void MainWindow::courseFrameClear() {
+    ui->addDeleteCourseStudentIDText->clear();
+    ui->addDeleteYearComboBox->setCurrentIndex(0);
+    ui->addDeleteCourseMajorComboBox->setCurrentIndex(0);
+    ui->addDeleteCourseNameComboBox->setCurrentIndex(0);
+}
+
+
 
 
 
@@ -351,11 +498,18 @@ void MainWindow::on_gradeRegistrationButton_clicked() {
         gradeFrameClear();
         return;
     }
+    else if(stn->courseList == nullptr){
+        QMessageBox::warning(this,"실패","수강 과목을 등록해주세요.");
+        gradeFrameClear();
+        return;
+    }
     else if(stn->getYear() == year && stn->getMajor() == major) {
         course* currentCourse = stn->courseList;
         while(currentCourse != nullptr) {
             if(currentCourse->getCourseName() == courseName) {
                 manager->updateGrade(stn, courseName, grade);
+                double GPA =  stn->calculateGPA();
+                stn->SetGPA(GPA);
                 gradeTable(stn);
                 QMessageBox::information(this,"성공","성적 등록에 성공했습니다.");
                 gradeFrameClear();
@@ -363,12 +517,13 @@ void MainWindow::on_gradeRegistrationButton_clicked() {
             }
             currentCourse = currentCourse->courseNext;
         }
+            QMessageBox::warning(this,"실패","수강 과목을 등록해주세요.");
+            gradeFrameClear();
+            return;
     }
-    else {
     QMessageBox::warning(this,"실패","학생 정보를 확인해주세요.");
     gradeFrameClear();
     return;
-    }
 }
 void MainWindow::gradeTable(student* stn) {
     ui->upgradeGradeTable->setRowCount(0);
@@ -409,102 +564,6 @@ void MainWindow::gradeFrameClear() {
 
 
 
-
-    // if(studentID == 0 && year.isEmpty() && major.isEmpty() && courseName.isEmpty() && grade.isEmpty()) {  // 입력칸 모두 널인 경우
-    //     QMessageBox::warning(this, "실패", "정보를 입력해주세요");
-    //     gradeFrameClear();
-    //     return;
-    // }
-
-    // if(!year.isEmpty() && !major.isEmpty() && !courseName.isEmpty()) {
-    //     student* currentStudent = management::manageHead;
-    //     while(currentStudent != nullptr) {
-    //         if(currentStudent->getStudentID() == studentID && currentStudent->getYear() == year && currentStudent->getMajor() == major) {
-    //             course* currentCourse = currentStudent->courseList;
-    //             while(currentCourse != nullptr) {
-    //                 if(currentCourse->getCourseName() == courseName && currentCourse->getGrade() == grade) {
-    //                     gradeSearchTable(studentID, year, major, courseName);
-    //                     QMessageBox::information(this, "조회 완료", "조회가 완료되었습니다.");
-    //                     gradeFrameClear();
-    //                     return;
-    //                 }
-    //                 currentCourse = currentCourse->courseNext;
-    //             }
-    //         }
-    //     QMessageBox::warning(this, "실패", "정보를 입력해주세요");
-    //     gradeFrameClear();
-    //     return;
-    //     }
-    // }
-
-    // else if(!year.isEmpty() && !major.isEmpty()) {
-    //     student* currentStudent = management::manageHead;
-    //     while(currentStudent != nullptr) {
-    //         if(currentStudent->getYear() == year && currentStudent->getMajor() == major) {
-    //             gradeSearchTable(studentID, year, major, courseName);
-    //             QMessageBox::information(this, "조회 완료", "조회가 완료되었습니다.");
-    //             gradeFrameClear();
-    //             return;
-    //         }
-    //         currentStudent = currentStudent->studentNext;
-    //     }
-    //     QMessageBox::warning(this, "실패", "학생 정보를 확인해주세요");
-    //     gradeFrameClear();
-    //     return;
-    // }
-    // else if(studentID != 0) {
-    //     student* currentStudent = management::manageHead;
-    //     while(currentStudent != nullptr) {
-    //         if(currentStudent->getStudentID() == studentID) {
-    //             gradeSearchTable(studentID, year, major, courseName);
-    //             QMessageBox::information(this, "조회 완료", "조회가 완료되었습니다.");
-    //             gradeFrameClear();
-    //             return;
-    //         }
-    //         currentStudent = currentStudent->studentNext;
-    //     }
-    //     QMessageBox::warning(this, "실패", "존재하는 학번이 없습니다.");
-    //     gradeFrameClear();
-    //     return;
-    // }
-    // else if (!year.isEmpty()) {
-    //     student* currentStudent = management::manageHead;
-    //     while(currentStudent != nullptr) {
-    //         if(currentStudent->getYear() == year) {
-    //             gradeSearchTable(studentID, year, major, courseName);
-    //             QMessageBox::information(this, "조회 완료", "조회가 완료되었습니다.");
-    //             gradeFrameClear();
-    //             return;
-    //         }
-    //         currentStudent = currentStudent->studentNext;
-    //     }
-    //     QMessageBox::warning(this, "실패", "존재하는 학년이 없습니다.");
-    //     gradeFrameClear();
-    //     return;
-    // }
-    // else if(!major.isEmpty()) {
-    //     student* currentStudent = management::manageHead;
-    //     while(currentStudent != nullptr) {
-    //         if(currentStudent->getMajor() == major) {
-    //             gradeSearchTable(studentID, year, major, courseName);
-    //             QMessageBox::information(this, "조회 완료", "조회가 완료되었습니다.");
-    //             gradeFrameClear();
-    //             return;
-    //         }
-    //         currentStudent = currentStudent->studentNext;
-    //     }
-    //     QMessageBox::warning(this, "실패", "존재하는 전공이 없습니다.");
-    //     gradeFrameClear();
-    //     return;
-    // }
-
-
-
-
-
-
-
-
 void MainWindow::clearAllStudents() {
     student* currentStudent = management::manageHead;
     while (currentStudent != nullptr) {
@@ -526,102 +585,6 @@ void MainWindow::clearAllStudents() {
 
 
 
-
-
-
-
-
-
-void MainWindow::searchClear() {
-    ui->searchStudentIDText->clear();
-    ui->searchYearComboBox->setCurrentIndex(0);
-    ui->searchMajorComboBox->setCurrentIndex(0);
-}
-
-void MainWindow::on_studentSearchButton_clicked() {
-    int studentID = ui->searchStudentIDText->text().toInt();
-    QString year = ui->searchYearComboBox->currentText();
-    QString major = ui->searchMajorComboBox->currentText();
-
-    if(studentID == 0 && year.isEmpty() && major.isEmpty()) {    // 모두 빈칸인 경우
-        QMessageBox::warning(this, "실패", "정보를 입력해주세요");
-        searchClear();
-        return;
-    }
-    searchStudentTable(studentID, year, major);
-
-    if (ui->searchTable->rowCount() == 0) {
-        QMessageBox::warning(this, "실패", "학생 정보를 확인해주세요");
-        searchClear();
-        return;
-    } else {
-        QMessageBox::information(this, "성공", "조회가 완료되었습니다.");
-        searchClear();
-        return;
-    }
-
-
-}
-
-void MainWindow::searchStudentTable(int stnID, QString year, QString major) {
-    ui->searchTable->setRowCount(0);
-    student* currentStudent = management::manageHead;
-    int row = 0;
-    while (currentStudent) {
-        bool match = true;
-        if (stnID != 0 && currentStudent->getStudentID() != stnID)
-            match = false;
-        if (!year.isEmpty() && currentStudent->getYear() != year)
-            match = false;
-        if (!major.isEmpty() && !currentStudent->getMajor().contains(major, Qt::CaseInsensitive))
-            match = false;
-
-        if (match) {
-            ui->searchTable->insertRow(row);
-            ui->searchTable->setItem(row, 0, new QTableWidgetItem(QString::number(currentStudent->getStudentID())));
-            ui->searchTable->setItem(row, 1, new QTableWidgetItem(currentStudent->getName()));
-            ui->searchTable->setItem(row, 2, new QTableWidgetItem(currentStudent->getYear()));
-            ui->searchTable->setItem(row, 3, new QTableWidgetItem(currentStudent->getMajor()));
-            row++;
-        }
-        currentStudent = currentStudent->studentNext;
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-void MainWindow:: on_allStudentSearchButton_clicked(){
-    if(management::manageHead == nullptr) {
-        QMessageBox::warning(this, "실패", "존재하는 학번이 없습니다.");
-        ui->searchStudentIDText->setFocus();
-        return;
-    }
-    else {
-        ui->searchTable->setRowCount(0);
-        int row = 0;
-        student* currentStudent = management::manageHead;
-        while (currentStudent != nullptr) { // 행으로 이동
-                ui->searchTable->insertRow(row);  // 행 추가
-                ui->searchTable->setItem(row, 0, new QTableWidgetItem(QString::number(currentStudent->getStudentID())));
-                ui->searchTable->setItem(row, 1, new QTableWidgetItem(currentStudent->getName()));
-                ui->searchTable->setItem(row, 2, new QTableWidgetItem(currentStudent->getYear()));
-                ui->searchTable->setItem(row, 3, new QTableWidgetItem(currentStudent->getMajor()));
-
-                row++;
-                currentStudent = currentStudent->studentNext;
-            }
-    }
-}
 
 
 

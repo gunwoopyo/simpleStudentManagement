@@ -146,7 +146,7 @@ void management::debugInsertList() {
         return ;
     }
     student* currentStudent = management::manageHead;
-
+    qDebug() << "==========================================================================================================";
     while(currentStudent != nullptr) {
         qDebug()<<"학번"<<currentStudent->getStudentID()<<" 이름"<<currentStudent->getName()<<"학년"<<currentStudent->getYear()<<" 전공"<<currentStudent->getMajor() <<
             " 노드"<<index  <<   " 이전 주소" << currentStudent->studentPrev <<

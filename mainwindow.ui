@@ -17,7 +17,7 @@
    <widget class="QTabWidget" name="tabWidget">
     <property name="geometry">
      <rect>
-      <x>40</x>
+      <x>20</x>
       <y>60</y>
       <width>1281</width>
       <height>761</height>
@@ -27,7 +27,7 @@
      <number>-1</number>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>3</number>
     </property>
     <widget class="QWidget" name="searchTab">
      <attribute name="title">
@@ -237,7 +237,7 @@
        </rect>
       </property>
       <property name="sortingEnabled">
-       <bool>true</bool>
+       <bool>false</bool>
       </property>
       <attribute name="horizontalHeaderDefaultSectionSize">
        <number>180</number>
@@ -284,7 +284,7 @@
       </column>
       <column>
        <property name="text">
-        <string>평균 졸업 학점</string>
+        <string>졸업 학점</string>
        </property>
        <property name="font">
         <font>
@@ -329,6 +329,72 @@
       <property name="text">
        <string>전체 학생 리스트</string>
       </property>
+     </widget>
+     <widget class="QPushButton" name="ascPushButton">
+      <property name="geometry">
+       <rect>
+        <x>430</x>
+        <y>185</y>
+        <width>41</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>▲</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="descPushButton">
+      <property name="geometry">
+       <rect>
+        <x>480</x>
+        <y>185</y>
+        <width>41</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>▼</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="sortComboBox">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>180</y>
+        <width>121</width>
+        <height>31</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+      <item>
+       <property name="text">
+        <string>정렬 기준</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>학번</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>이름</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>학년</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>평균 졸업 학점</string>
+       </property>
+      </item>
      </widget>
     </widget>
     <widget class="QWidget" name="registrationTab">

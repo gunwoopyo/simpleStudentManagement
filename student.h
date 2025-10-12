@@ -15,15 +15,16 @@ public:
     student* studentPrev;
     student* studentNext;
 
-    student(int ID, QString n, QString m, QString y) : studentID(ID), name(n), major(m), year(y), courseList(nullptr), studentPrev(nullptr), studentNext(nullptr) { }
+    student(int ID, QString n, QString m, QString y) : studentID(ID), name(n), major(m), year(y), GPA(0),courseList(nullptr), studentPrev(nullptr), studentNext(nullptr) { }
 
     int getStudentID() { return studentID; }
     QString getName() { return name; }
     QString getMajor() { return major; }
     QString getYear() { return year; }
     double getGPA() { return GPA; }
-    double SetGPA(double g) { this->GPA = g; }
-    double calculateGPA(student* stn, double g);
+
+    void SetGPA(double g) { this->GPA = g; }
+    double calculateGPA();
 
 public slots:
 };

@@ -44,6 +44,9 @@ public:
     QTableWidget *searchTable;
     QLabel *label_4;
     QLabel *label_8;
+    QPushButton *ascPushButton;
+    QPushButton *descPushButton;
+    QComboBox *sortComboBox;
     QWidget *registrationTab;
     QFrame *registrationFrame;
     QLabel *registrationStudentID;
@@ -104,7 +107,7 @@ public:
         centralwidget->setObjectName("centralwidget");
         tabWidget = new QTabWidget(centralwidget);
         tabWidget->setObjectName("tabWidget");
-        tabWidget->setGeometry(QRect(40, 60, 1281, 761));
+        tabWidget->setGeometry(QRect(20, 60, 1281, 761));
         tabWidget->setToolTipDuration(-1);
         searchTab = new QWidget();
         searchTab->setObjectName("searchTab");
@@ -177,7 +180,7 @@ public:
         searchTable->setHorizontalHeaderItem(4, __qtablewidgetitem4);
         searchTable->setObjectName("searchTable");
         searchTable->setGeometry(QRect(170, 220, 921, 431));
-        searchTable->setSortingEnabled(true);
+        searchTable->setSortingEnabled(false);
         searchTable->horizontalHeader()->setDefaultSectionSize(180);
         label_4 = new QLabel(searchTab);
         label_4->setObjectName("label_4");
@@ -192,6 +195,21 @@ public:
         QFont font3;
         font3.setPointSize(14);
         label_8->setFont(font3);
+        ascPushButton = new QPushButton(searchTab);
+        ascPushButton->setObjectName("ascPushButton");
+        ascPushButton->setGeometry(QRect(430, 185, 41, 21));
+        descPushButton = new QPushButton(searchTab);
+        descPushButton->setObjectName("descPushButton");
+        descPushButton->setGeometry(QRect(480, 185, 41, 21));
+        sortComboBox = new QComboBox(searchTab);
+        sortComboBox->addItem(QString());
+        sortComboBox->addItem(QString());
+        sortComboBox->addItem(QString());
+        sortComboBox->addItem(QString());
+        sortComboBox->addItem(QString());
+        sortComboBox->setObjectName("sortComboBox");
+        sortComboBox->setGeometry(QRect(300, 180, 121, 31));
+        sortComboBox->setFont(font1);
         tabWidget->addTab(searchTab, QString());
         registrationTab = new QWidget();
         registrationTab->setObjectName("registrationTab");
@@ -482,7 +500,7 @@ public:
 
         retranslateUi(MainWindow);
 
-        tabWidget->setCurrentIndex(0);
+        tabWidget->setCurrentIndex(3);
 
 
         QMetaObject::connectSlotsByName(MainWindow);
@@ -519,9 +537,17 @@ public:
         QTableWidgetItem *___qtablewidgetitem3 = searchTable->horizontalHeaderItem(3);
         ___qtablewidgetitem3->setText(QCoreApplication::translate("MainWindow", "\354\240\204\352\263\265", nullptr));
         QTableWidgetItem *___qtablewidgetitem4 = searchTable->horizontalHeaderItem(4);
-        ___qtablewidgetitem4->setText(QCoreApplication::translate("MainWindow", "\355\217\211\352\267\240 \354\241\270\354\227\205 \355\225\231\354\240\220", nullptr));
+        ___qtablewidgetitem4->setText(QCoreApplication::translate("MainWindow", "\354\241\270\354\227\205 \355\225\231\354\240\220", nullptr));
         label_4->setText(QCoreApplication::translate("MainWindow", "\355\225\231\354\203\235 \354\240\225\353\263\264 \354\241\260\355\232\214", nullptr));
         label_8->setText(QCoreApplication::translate("MainWindow", "\354\240\204\354\262\264 \355\225\231\354\203\235 \353\246\254\354\212\244\355\212\270", nullptr));
+        ascPushButton->setText(QCoreApplication::translate("MainWindow", "\342\226\262", nullptr));
+        descPushButton->setText(QCoreApplication::translate("MainWindow", "\342\226\274", nullptr));
+        sortComboBox->setItemText(0, QCoreApplication::translate("MainWindow", "\354\240\225\353\240\254 \352\270\260\354\244\200", nullptr));
+        sortComboBox->setItemText(1, QCoreApplication::translate("MainWindow", "\355\225\231\353\262\210", nullptr));
+        sortComboBox->setItemText(2, QCoreApplication::translate("MainWindow", "\354\235\264\353\246\204", nullptr));
+        sortComboBox->setItemText(3, QCoreApplication::translate("MainWindow", "\355\225\231\353\205\204", nullptr));
+        sortComboBox->setItemText(4, QCoreApplication::translate("MainWindow", "\355\217\211\352\267\240 \354\241\270\354\227\205 \355\225\231\354\240\220", nullptr));
+
         tabWidget->setTabText(tabWidget->indexOf(searchTab), QCoreApplication::translate("MainWindow", "\355\225\231\354\203\235 \354\240\225\353\263\264 \354\241\260\355\232\214", nullptr));
         registrationStudentID->setText(QCoreApplication::translate("MainWindow", "\355\225\231\353\262\210", nullptr));
         registrationName->setText(QCoreApplication::translate("MainWindow", "\354\235\264\353\246\204", nullptr));

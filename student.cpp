@@ -6,17 +6,14 @@
 #include <QDebug>
 
 
-double student::calculateGPA(student* stn, double g) {
-
+ double student::calculateGPA() {
     double gradeToNumber = 0.0;
     int count = 0;
     double GPA = 0.0;
-
-    course* currentCourse = stn->courseList;
+    course* currentCourse = courseList;
 
     while(currentCourse != nullptr) {
         QString grade = currentCourse->getGrade();
-
         if (grade == "A+") {
             gradeToNumber += 4.5;
         }
@@ -38,10 +35,14 @@ double student::calculateGPA(student* stn, double g) {
         else if (grade == "F") {
             gradeToNumber += 0.0;
         }
-
+        else if (grade == "") {
+            currentCourse = currentCourse->courseNext;
+            continue;
+        }
         count++;
         currentCourse = currentCourse->courseNext;
     }
+
     GPA = gradeToNumber / count;
     qDebug() << "GPA " << GPA ;
     return GPA;

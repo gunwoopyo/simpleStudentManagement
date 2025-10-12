@@ -17,9 +17,9 @@ public:
     student* searchStudentID(int studentID);
 
     void debugInsertList();
-
     void debugCourseList();
 private slots:
+
 public slots:
 };
 
